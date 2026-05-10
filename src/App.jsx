@@ -3,7 +3,6 @@ import {
   ChevronDown, 
   CheckCircle2, 
   Smartphone, 
-  Zap, 
   X,
   MessageCircle,
   Mail,
@@ -49,62 +48,29 @@ const App = () => {
 
   const validatePhone = (phone, country) => {
     const cleaned = phone.replace(/\s/g, '');
-    if (country === 'CD') {
-      return /^(243|\+243)[0-9]{9}$/.test(cleaned);
-    }
-    if (country === 'KE') {
-      return /^(254|\+254)[0-9]{9}$/.test(cleaned);
-    }
+    if (country === 'CD') return /^(243|\+243)[0-9]{9}$/.test(cleaned);
+    if (country === 'KE') return /^(254|\+254)[0-9]{9}$/.test(cleaned);
     return false;
   };
 
   const validateForm = () => {
     const errors = {};
-    
-    if (!formData.senderName.trim() || formData.senderName.trim().length < 2) {
-      errors.senderName = 'Nom invalide';
-    }
-    
-    if (!formData.receiverName.trim() || formData.receiverName.trim().length < 2) {
-      errors.receiverName = 'Nom invalide';
-    }
-
+    if (!formData.senderName.trim() || formData.senderName.trim().length < 2) errors.senderName = 'Nom invalide';
+    if (!formData.receiverName.trim() || formData.receiverName.trim().length < 2) errors.receiverName = 'Nom invalide';
     const senderCountry = isRDCToKen ? 'CD' : 'KE';
     const receiverCountry = isRDCToKen ? 'KE' : 'CD';
-
-    if (!validatePhone(formData.senderPhone, senderCountry)) {
-      errors.senderPhone = isRDCToKen 
-        ? 'Format: 243XXXXXXXXX' 
-        : 'Format: 254XXXXXXXXX';
-    }
-
-    if (!validatePhone(formData.receiverPhone, receiverCountry)) {
-      errors.receiverPhone = isRDCToKen 
-        ? 'Format: 254XXXXXXXXX' 
-        : 'Format: 243XXXXXXXXX';
-    }
-
-    if (inputAmount < 5) {
-      errors.amount = 'Montant minimum : 5$';
-    }
-
-    if (inputAmount > 500) {
-      errors.amount = 'Montant maximum : 500$';
-    }
-
+    if (!validatePhone(formData.senderPhone, senderCountry)) errors.senderPhone = isRDCToKen ? 'Format: 243XXXXXXXXX' : 'Format: 254XXXXXXXXX';
+    if (!validatePhone(formData.receiverPhone, receiverCountry)) errors.receiverPhone = isRDCToKen ? 'Format: 254XXXXXXXXX' : 'Format: 243XXXXXXXXX';
+    if (inputAmount < 5) errors.amount = 'Montant minimum : 5$';
+    if (inputAmount > 500) errors.amount = 'Montant maximum : 500$';
     return errors;
   };
 
   const handleTransfer = async (e) => {
     e.preventDefault();
     setError('');
-    
     const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
+    if (Object.keys(errors).length > 0) { setFormErrors(errors); return; }
     setIsLoading(true);
     try {
       const response = await fetch("https://fintrans-backend.onrender.com/transfer", {
@@ -112,7 +78,6 @@ const App = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, amount: inputAmount, direction })
       });
-
       if (response.ok) {
         const data = await response.json();
         setTransactionId(data.id);
@@ -182,11 +147,14 @@ const App = () => {
       <div className="orb w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-purple-600/20 -top-24 -left-24" />
       <div className="orb w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-indigo-600/15 bottom-0 -right-12" style={{ animationDelay: '-7s' }} />
 
-      <nav className={`fixed top-0 w-full z-50 py-4 md:py-6 transition-all duration-500 font-heading ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
+      <nav className={`fixed top-0 w-full z-50 py-4 md:py-6 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
         <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/logo.svg" alt="MuniaPay" className="h-10 w-auto" />
-        </div>
+          </div>
+          <button className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black text-xs hover:bg-white/10 transition-all uppercase tracking-widest">
+            Connexion
+          </button>
         </div>
       </nav>
 
@@ -246,9 +214,7 @@ const App = () => {
                     <span className="font-black text-xs font-heading">{isRDCToKen ? 'USD' : 'KES'}</span>
                   </div>
                 </div>
-                {formErrors.amount && (
-                  <p className="text-red-400 text-xs mt-2 font-heading">{formErrors.amount}</p>
-                )}
+                {formErrors.amount && <p className="text-red-400 text-xs mt-2 font-heading">{formErrors.amount}</p>}
               </div>
 
               <div className="bg-purple-600/5 border border-purple-500/30 rounded-2xl p-6">
@@ -263,7 +229,7 @@ const App = () => {
                   </div>
                 </div>
                 <div className="mt-3 pt-3 border-t border-white/5 text-xs text-center font-black text-slate-500 uppercase tracking-widest">
-                  Frais {(feeAmount).toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) • Simple et honnête
+                  Frais {feeAmount.toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) • Simple et honnête
                 </div>
               </div>
 
@@ -382,7 +348,7 @@ const App = () => {
       </section>
 
       <footer className="py-12 text-center border-t border-white/5">
-        <div className="text-xl text-white font-black opacity-50 mb-4 uppercase">MUNIA<span className="text-purple-400 font-normal">PAY</span></div>
+        <img src="/logo.svg" alt="MuniaPay" className="h-8 w-auto mx-auto mb-4 opacity-50" />
         <p className="text-xs font-bold text-slate-700 uppercase tracking-widest">© 2026 Munia Pay. Fait avec coeur.</p>
       </footer>
 
@@ -415,7 +381,7 @@ const App = () => {
             ) : (
               <>
                 <h3 className="text-2xl font-black font-heading text-white uppercase italic text-center mb-6">Dernière étape.</h3>
-                
+
                 <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-5 mb-6">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-400">Vous envoyez</span>
