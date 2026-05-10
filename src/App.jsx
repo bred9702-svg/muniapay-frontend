@@ -186,6 +186,8 @@ const App = () => {
         <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/logo.svg" alt="MuniaPay" className="h-10 w-auto" />
+        </div>
+        </div>
       </nav>
 
       <section className="relative pt-32 pb-16 md:pt-60 md:pb-32 text-center">
