@@ -48,36 +48,35 @@ const App = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleTransfer = async (e) => {
+const handleTransfer = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      // Simulation d'appel pour la démo preview
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      /* Code réel de votre backend :
-      const response = await fetch('https://fintransfert-backend.onrender.com/transfer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("https://fintrans-backend.onrender.com/transfer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, amount: inputAmount, direction })
       });
-      if (response.ok) { ... }
-      */
 
-      setIsSuccess(true);
-      setTimeout(() => {
-        setShowModal(false);
-        setIsSuccess(false);
-        setFormData({ senderName: '', senderPhone: '', receiverName: '', receiverPhone: '' });
-      }, 2500);
+      if (response.ok) {
+        setIsSuccess(true);
+        setTimeout(() => {
+          setShowModal(false);
+          setIsSuccess(false);
+          setFormData({ senderName: '', senderPhone: '', receiverName: '', receiverPhone: '' });
+        }, 2500);
+      } else {
+        alert("Erreur lors du transfert. Réessayez.");
+      }
     } catch (error) {
       console.error(error);
-      // Remplacement de alert par un log ou message UI interne si besoin
+      alert("Erreur de connexion.");
     } finally {
       setIsLoading(false);
     }
   };
+
 
   return (
     <div className="min-h-screen bg-[#02040a] text-slate-100 font-['Questrial'] antialiased overflow-x-hidden">
