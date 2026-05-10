@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  ArrowRightLeft, 
   ChevronDown, 
   CheckCircle2, 
-  Send, 
   Smartphone, 
-  ShieldCheck, 
   Zap, 
   X,
   MessageCircle,
@@ -17,15 +14,14 @@ import {
 } from 'lucide-react';
 
 const App = () => {
-  // --- ÉTATS ---
   const [direction, setDirection] = useState('RDC_TO_KEN');
   const [inputAmount, setInputAmount] = useState(100);
   const [showModal, setShowModal] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  // --- FORMULAIRE ---
   const [formData, setFormData] = useState({
     senderName: '',
     senderPhone: '',
@@ -33,7 +29,6 @@ const App = () => {
     receiverPhone: ''
   });
 
-  // --- LOGIQUE CALCUL ---
   const feePercent = 0.07;
   const rates = { 'RDC_TO_KEN': 129.50, 'KEN_TO_RDC': 0.00772 };
   const isRDCToKen = direction === 'RDC_TO_KEN';
@@ -57,8 +52,12 @@ const App = () => {
         body: JSON.stringify({ ...formData, amount: inputAmount, direction })
       });
       if (response.ok) {
-        setShowModal(false);
-        setFormData({ senderName: '', senderPhone: '', receiverName: '', receiverPhone: '' });
+        setIsSuccess(true);
+        setTimeout(() => {
+          setShowModal(false);
+          setIsSuccess(false);
+          setFormData({ senderName: '', senderPhone: '', receiverName: '', receiverPhone: '' });
+        }, 3000);
       }
     } catch (error) {
       console.error(error);
@@ -105,21 +104,24 @@ const App = () => {
         @media (min-width: 768px) {
           .section-rounded { border-radius: 5rem; margin-left: 2rem; margin-right: 2rem; }
         }
+        @keyframes reveal {
+          from { opacity: 0; transform: translateY(20px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-reveal { animation: reveal 0.45s ease forwards; }
       `}</style>
 
-      {/* BACKGROUND EFFECTS */}
       <div className="orb w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-purple-600/20 -top-24 -left-24" />
       <div className="orb w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-indigo-600/15 bottom-0 -right-12" style={{ animationDelay: '-7s' }} />
 
-      {/* NAVBAR */}
       <nav className={`fixed top-0 w-full z-50 py-4 md:py-6 transition-all duration-500 font-heading ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
         <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center">
           <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-600 rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white" />
+              <Zap className="w-5 h-5 text-white" />
             </div>
             <div className="text-lg md:text-xl flex items-baseline text-white font-black tracking-tighter uppercase">
-                MUNIA<span className="text-purple-400 font-normal">PAY</span>
+              MUNIA<span className="text-purple-400 font-normal">PAY</span>
             </div>
           </div>
           <button className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black text-[9px] md:text-[10px] hover:bg-white/10 transition-all uppercase tracking-[0.2em]">
@@ -128,7 +130,6 @@ const App = () => {
         </div>
       </nav>
 
-      {/* HERO SECTION */}
       <section className="relative pt-32 pb-16 md:pt-60 md:pb-32 text-center">
         <div className="container mx-auto max-w-6xl px-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-purple-400 text-[9px] font-black font-heading tracking-[0.2em] uppercase mb-10">
@@ -142,7 +143,7 @@ const App = () => {
           <p className="text-slate-400 text-base md:text-2xl max-w-2xl mx-auto mb-16">
             Envoyez du soutien à ceux qui comptent vraiment. Pas de bureau à visiter, pas de capture d'écran à envoyer. Juste vous et votre famille.
           </p>
-          <button 
+          <button
             onClick={() => document.getElementById('calculateur').scrollIntoView({ behavior: 'smooth' })}
             className="relative group px-12 py-6 rounded-2xl overflow-hidden shadow-2xl transition-transform hover:scale-105"
           >
@@ -152,7 +153,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* CALCULATEUR */}
       <section className="py-12 md:py-24 relative" id="calculateur">
         <div className="container mx-auto px-4">
           <div className="max-w-xl mx-auto glass-card p-6 md:p-10 rounded-[3rem] md:rounded-[4rem] shadow-2xl border border-white/20">
@@ -165,7 +165,7 @@ const App = () => {
                     <div className="w-4 h-[1px] bg-white/20" />
                     <span className="text-xl">{isRDCToKen ? '🇰🇪' : '🇨🇩'}</span>
                     <span className="text-[9px] font-black font-heading uppercase italic ml-1 text-white/80">
-                        {isRDCToKen ? 'Congo vers Kenya' : 'Kenya vers Congo'}
+                      {isRDCToKen ? 'Congo vers Kenya' : 'Kenya vers Congo'}
                     </span>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ const App = () => {
                   </div>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/5 text-[9px] text-center font-black text-slate-500 uppercase tracking-[0.2em] italic">
-                    Frais 7% • Simple et honnête
+                  Frais 7% • Simple et honnête
                 </div>
               </div>
 
@@ -212,7 +212,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* COMMENT ÇA MARCHE */}
       <section className="py-20 md:py-32 relative">
         <div className="container mx-auto max-w-7xl px-6 relative z-10">
           <div className="text-center mb-24">
@@ -221,9 +220,9 @@ const App = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              { id: '01', title: 'Détails', desc: "Entrez les informations de l'expéditeur et du bénéficiaire. C'est simple et sans paperasse.", icon: <MessageSquare /> },
-              { id: '02', title: 'Paiement', desc: "Payez via votre compte Mobile Money habituel. Pas besoin de changer vos habitudes.", icon: <Smartphone /> },
-              { id: '03', title: 'Réception', desc: "Le bénéficiaire reçoit l'argent sur son M-Pesa en moins de 15 minutes. Garanti.", icon: <CheckCircle2 /> }
+              { id: '01', title: 'Détails', desc: "Entrez les informations de l'expéditeur et du bénéficiaire.", icon: <MessageSquare /> },
+              { id: '02', title: 'Paiement', desc: "Payez via votre compte Mobile Money habituel.", icon: <Smartphone /> },
+              { id: '03', title: 'Réception', desc: "Le bénéficiaire reçoit l'argent sur M-Pesa en moins de 15 minutes.", icon: <CheckCircle2 /> }
             ].map((step, i) => (
               <div key={i} className="glass-card p-10 rounded-[3rem] group hover:border-purple-500/50 transition-all relative overflow-hidden">
                 <div className="absolute -top-6 -right-6 text-8xl font-black text-white/5 font-heading italic">{step.id}</div>
@@ -236,7 +235,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* TÉMOIGNAGES */}
       <section className="py-20 md:py-32 bg-white section-rounded relative overflow-hidden shadow-2xl border border-slate-100">
         <div className="container mx-auto max-w-7xl px-8 md:px-16 relative z-10">
           <div className="text-center mb-16 md:mb-24">
@@ -247,9 +245,9 @@ const App = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: "Maman Sarah", text: "Avant, mon fils devait aller à la banque, envoyer la photo... Là, je reçois mon M-Pesa même quand il est minuit. C'est magique.", offset: "" },
-              { name: "Junior K.", text: "J'utilise Munia Pay pour mon loyer ici au Kenya depuis le Congo. C'est carré, pas besoin de justifier 100 fois chaque envoi.", offset: "md:translate-y-6" },
-              { name: "Alain M.", text: "C'est le seul service qui ne me demande pas de scanner ma carte 3 fois pour un petit envoi. C'est rapide.", offset: "md:translate-y-12" }
+              { name: "Maman Sarah", text: "Avant, mon fils devait aller à la banque, envoyer la photo... Là, je reçois mon M-Pesa même quand il est minuit.", offset: "" },
+              { name: "Junior K.", text: "J'utilise Munia Pay pour mon loyer ici au Kenya depuis le Congo. C'est carré.", offset: "md:translate-y-6" },
+              { name: "Alain M.", text: "C'est le seul service qui ne me demande pas de scanner ma carte 3 fois.", offset: "md:translate-y-12" }
             ].map((t, i) => (
               <div key={i} className={`bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 ${t.offset}`}>
                 <p className="font-heading font-black uppercase text-sm italic text-slate-900 mb-2">{t.name}</p>
@@ -260,7 +258,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* POURQUOI NOUS */}
       <section className="py-20 md:py-32 bg-[#0a0c14] section-rounded my-12 md:my-20 relative overflow-hidden border border-white/5 shadow-2xl">
         <div className="container mx-auto max-w-7xl px-8 md:px-16 text-white">
           <div className="text-center mb-12 md:mb-20">
@@ -269,9 +266,9 @@ const App = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Oubliez Western.", desc: "Une erreur d'une lettre ? Avec nous, c'est votre numéro de téléphone qui compte. Zéro blocage.", icon: <X className="w-5 h-5"/> },
-              { title: "Même à minuit.", desc: "Envoyez depuis votre lit, l'argent arrive direct sur leur M-Pesa. Pas besoin d'ATM ouvert.", icon: <Clock className="w-5 h-5"/> },
-              { title: "Zéro capture.", desc: "Pas besoin de prouver avec une photo WhatsApp. Notre système voit tout automatiquement.", icon: <Lock className="w-5 h-5"/> }
+              { title: "Oubliez Western.", desc: "C'est votre numéro de téléphone qui compte. Zéro blocage.", icon: <X className="w-5 h-5"/> },
+              { title: "Même à minuit.", desc: "L'argent arrive direct sur M-Pesa. Pas besoin d'ATM ouvert.", icon: <Clock className="w-5 h-5"/> },
+              { title: "Zéro capture.", desc: "Notre système voit tout automatiquement.", icon: <Lock className="w-5 h-5"/> }
             ].map((item, i) => (
               <div key={i} className="glass-card p-8 md:p-10 rounded-[2.5rem] group border border-white/10">
                 <h4 className="text-xl md:text-2xl font-black font-heading uppercase mb-3 italic tracking-tighter">{item.title}</h4>
@@ -282,7 +279,6 @@ const App = () => {
         </div>
       </section>
 
-      {/* FAQ & ASSISTANCE */}
       <section className="py-16 md:py-32">
         <div className="container mx-auto max-w-4xl px-6">
           <div className="text-center mb-16">
@@ -291,9 +287,9 @@ const App = () => {
           </div>
           <div className="space-y-4 mb-20">
             {[
-              { q: "C'est vraiment instantané ?", a: "Absolument. Une fois votre paiement validé, notre système traite l'envoi immédiatement. Le bénéficiaire reçoit ses fonds sur M-Pesa en moyenne sous 10 à 15 minutes." },
-              { q: "Y a-t-il une limite de transfert ?", a: "Pour la sécurité, nous limitons les nouveaux utilisateurs à 500$ par transaction. Contactez-nous pour augmenter ce plafond." },
-              { q: "Mes informations sont-elles sécurisées ?", a: "Nous utilisons un cryptage de bout en bout. Nous ne stockons jamais vos accès Mobile Money personnels." }
+              { q: "C'est vraiment instantané ?", a: "Absolument. Le bénéficiaire reçoit ses fonds sur M-Pesa en moyenne sous 10 à 15 minutes." },
+              { q: "Y a-t-il une limite de transfert ?", a: "Pour la sécurité, nous limitons les nouveaux utilisateurs à 500$ par transaction." },
+              { q: "Mes informations sont-elles sécurisées ?", a: "Nous utilisons un cryptage de bout en bout. Nous ne stockons jamais vos accès Mobile Money." }
             ].map((item, i) => (
               <div key={i} className={`glass-card p-6 md:p-8 rounded-3xl cursor-pointer transition-all ${openFaq === i ? 'bg-purple-500/5 border-purple-500/30' : ''}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                 <div className="flex justify-between items-center text-white">
@@ -307,10 +303,9 @@ const App = () => {
             ))}
           </div>
 
-          {/* ASSISTANCE */}
-          <div className="p-8 md:p-12 glass-card rounded-[3rem] border border-purple-500/20 text-center relative overflow-hidden group">
+          <div className="p-8 md:p-12 glass-card rounded-[3rem] border border-purple-500/20 text-center">
             <h4 className="text-xl md:text-2xl font-black font-heading text-white uppercase italic mb-4">Besoin d'un coup de main ?</h4>
-            <p className="text-slate-400 mb-8 max-w-md mx-auto">Notre équipe est disponible 7j/7 pour répondre à vos questions ou vous aider en cas de problème.</p>
+            <p className="text-slate-400 mb-8 max-w-md mx-auto">Notre équipe est disponible 7j/7.</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <a href="#" className="flex items-center gap-3 px-8 py-4 bg-green-500/10 border border-green-500/20 rounded-2xl text-green-400 font-heading font-black text-xs uppercase tracking-widest hover:bg-green-500 hover:text-white transition-all">
                 <MessageCircle className="w-4 h-4" /> WhatsApp
@@ -323,32 +318,43 @@ const App = () => {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="py-12 text-center border-t border-white/5">
-        <div className="brand-name text-xl text-white font-black opacity-50 mb-4 uppercase">MUNIA<span className="text-purple-400 font-normal">PAY</span></div>
-        <p className="text-[8px] font-bold text-slate-700 uppercase tracking-[0.3em]">© 2024 Munia Pay. Fait avec coeur.</p>
+        <div className="text-xl text-white font-black opacity-50 mb-4 uppercase">MUNIA<span className="text-purple-400 font-normal">PAY</span></div>
+        <p className="text-[8px] font-bold text-slate-700 uppercase tracking-[0.3em]">© 2026 Munia Pay. Fait avec coeur.</p>
       </footer>
 
-      {/* MODAL */}
       {showModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" onClick={() => setShowModal(false)} />
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" onClick={() => !isLoading && setShowModal(false)} />
           <div className="glass-card w-full max-w-2xl rounded-[3rem] relative p-8 md:p-12 border border-white/20 animate-reveal">
             <button onClick={() => setShowModal(false)} className="absolute top-8 right-8 text-white/30 hover:text-white"><X /></button>
-            <h3 className="text-2xl md:text-3xl font-black font-heading text-white uppercase italic text-center mb-8">Dernière étape.</h3>
-            <form className="space-y-6 text-white" onSubmit={handleTransfer}>
-              <div className="grid md:grid-cols-2 gap-4">
-                <input type="text" placeholder="VOTRE NOM" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.senderName} onChange={e => setFormData({...formData, senderName: e.target.value})} />
-                <input type="tel" placeholder="VOTRE NUMÉRO" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.senderPhone} onChange={e => setFormData({...formData, senderPhone: e.target.value})} />
+
+            {isSuccess ? (
+              <div className="text-center py-10">
+                <div className="w-24 h-24 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mx-auto mb-8">
+                  <span className="text-5xl">✅</span>
+                </div>
+                <h4 className="text-3xl font-black uppercase italic font-heading mb-4 text-white">Transfert initié !</h4>
+                <p className="text-slate-400 max-w-md mx-auto leading-relaxed">Votre famille recevra l'argent sous environ 15 minutes. Merci de votre confiance.</p>
               </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                <input type="text" placeholder="NOM DU BÉNÉFICIAIRE" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.receiverName} onChange={e => setFormData({...formData, receiverName: e.target.value})} />
-                <input type="tel" placeholder="NUMÉRO DE RÉCEPTION" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.receiverPhone} onChange={e => setFormData({...formData, receiverPhone: e.target.value})} />
-              </div>
-              <button type="submit" disabled={isLoading} className="w-full py-5 bg-purple-600 text-white rounded-xl font-black uppercase tracking-[0.2em] font-heading shadow-xl hover:bg-purple-500 transition-all">
-                {isLoading ? "Traitement..." : "Confirmer l'envoi"}
-              </button>
-            </form>
+            ) : (
+              <>
+                <h3 className="text-2xl md:text-3xl font-black font-heading text-white uppercase italic text-center mb-8">Dernière étape.</h3>
+                <form className="space-y-6 text-white" onSubmit={handleTransfer}>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="VOTRE NOM" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.senderName} onChange={e => setFormData({...formData, senderName: e.target.value})} />
+                    <input type="tel" placeholder="VOTRE NUMÉRO" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.senderPhone} onChange={e => setFormData({...formData, senderPhone: e.target.value})} />
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <input type="text" placeholder="NOM DU BÉNÉFICIAIRE" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.receiverName} onChange={e => setFormData({...formData, receiverName: e.target.value})} />
+                    <input type="tel" placeholder="NUMÉRO DE RÉCEPTION" required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500" value={formData.receiverPhone} onChange={e => setFormData({...formData, receiverPhone: e.target.value})} />
+                  </div>
+                  <button type="submit" disabled={isLoading} className="w-full py-5 bg-purple-600 text-white rounded-xl font-black uppercase tracking-[0.2em] font-heading shadow-xl hover:bg-purple-500 transition-all">
+                    {isLoading ? "Traitement..." : "Confirmer l'envoi"}
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       )}
