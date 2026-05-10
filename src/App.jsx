@@ -150,7 +150,7 @@ const App = () => {
       <nav className={`fixed top-0 w-full z-50 py-4 md:py-6 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
         <div className="container mx-auto max-w-7xl px-6 flex justify-between items-center">
           <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src="/logo.svg" alt="MuniaPay" className="h-10 w-auto" />
+            <img src="/logo.svg" alt="MuniaPay" className="h-8 w-auto" />
           </div>
           <button className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black text-xs hover:bg-white/10 transition-all uppercase tracking-widest">
             Connexion
