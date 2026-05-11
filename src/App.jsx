@@ -255,13 +255,13 @@ body { overflow-x: hidden; max-width: 100vw; }
       </div>
 
    {/* STORYTELLING À DROITE */}
-<img 
-  src="/illustration.png" 
-  alt="Transfert Congo-Kenya" 
-  className="w-full h-auto max-w-full object-contain"
-/>
-        
-        <div>
+<div className="space-y-6 min-w-0">
+  <img 
+    src="/illustration.png" 
+    alt="Transfert Congo-Kenya" 
+    className="w-full h-auto max-w-full object-contain"
+  />
+    <div>
           <h3 className="text-2xl md:text-3xl font-heading font-black text-white uppercase italic mb-4">
             Des milliers de familles. <br />
             <span className="text-purple-400">Un seul vrai problème.</span>
