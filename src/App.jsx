@@ -156,18 +156,18 @@ body { overflow-x: hidden; max-width: 100vw; }
 <div className="orb w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-indigo-600/15 bottom-0 right-0 max-w-full" style={{ animationDelay: '-7s' }} />
 
      <nav className={`fixed top-0 left-0 right-0 w-full z-50 py-4 md:py-6 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">
+        <div className="flex items-center justify-between max-w-6xl mx-auto gap-4">
           <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/logo.svg" alt="MuniaPay" className="h-9 w-auto" />
           </div>
-   <a 
+  <a 
   href="https://wa.me/254742599719?text=Bonjour%20MuniaPay,%20j'ai%20besoin%20d'aide" 
   target="_blank" 
   rel="noopener noreferrer"
-  className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black text-xs hover:bg-green-500 hover:border-green-500 transition-all uppercase tracking-widest inline-flex items-center gap-2 w-auto"
+  className="glass-card text-white px-4 py-2 md:px-6 md:py-3 rounded-xl font-black text-xs hover:bg-green-500 hover:border-green-500 transition-all uppercase tracking-widest inline-flex items-center gap-2 shrink-0"
 >
   <MessageCircle className="w-3 h-3 md:w-4 md:h-4" />
-  Help ?
+  <span className="hidden sm:inline">Help ?</span>
 </a>
         </div>
       </nav>
