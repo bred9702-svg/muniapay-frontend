@@ -160,11 +160,12 @@ body { overflow-x: hidden; max-width: 100vw; }
           <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/logo.svg" alt="MuniaPay" className="h-9 w-auto" />
           </div>
-          <a 
+   <a 
   href="https://wa.me/254742599719?text=Bonjour%20MuniaPay,%20j'ai%20besoin%20d'aide" 
   target="_blank" 
   rel="noopener noreferrer"
-className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black text-xs hover:bg-green-500 hover:border-green-500 transition-all uppercase tracking-widest inline-flex items-center gap-2 w-auto">
+  className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black text-xs hover:bg-green-500 hover:border-green-500 transition-all uppercase tracking-widest inline-flex items-center gap-2 w-auto"
+>
   <MessageCircle className="w-3 h-3 md:w-4 md:h-4" />
   Help ?
 </a>
