@@ -196,7 +196,7 @@ body { overflow-x: hidden; max-width: 100vw; }
       </section>
 
      <section className="py-12 md:py-24 relative" id="calculateur">
-  <div className="container mx-auto px-4">
+  <div className="container mx-auto px-4 overflow-hidden">
    <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-center min-w-0">
       
       {/* CALCULATEUR À GAUCHE */}
