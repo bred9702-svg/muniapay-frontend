@@ -197,7 +197,7 @@ html, body {
 
      <section className="py-12 md:py-24 relative" id="calculateur">
   <div className="container mx-auto px-4 overflow-hidden">
-   <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-center min-w-0">
+  <div className="grid lg:grid-cols-2 gap-6 xl:gap-8 max-w-5xl xl:max-w-6xl mx-auto items-center min-w-0">
       
       {/* CALCULATEUR À GAUCHE */}
       <div className="glass-card p-6 md:p-10 rounded-3xl shadow-2xl border border-white/20">
