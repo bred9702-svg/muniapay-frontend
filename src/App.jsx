@@ -258,7 +258,11 @@ body { overflow-x: hidden; max-width: 100vw; }
 
    {/* STORYTELLING À DROITE */}
 <div className="space-y-6 min-w-0">
-        <img src="/illustration.png" alt="Transfert Congo-Kenya" className="w-full max-w-md mx-auto" />
+       <img 
+  src="/illustration.png" 
+  alt="Transfert Congo-Kenya" 
+  className="w-full max-w-md mx-auto object-contain overflow-hidden"
+/>
         
         <div>
           <h3 className="text-2xl md:text-3xl font-heading font-black text-white uppercase italic mb-4">
