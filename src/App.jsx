@@ -257,7 +257,7 @@ body { overflow-x: hidden; max-width: 100vw; }
       </div>
 
       {/* STORYTELLING À DROITE */}
-<div className="space-y-6 flex flex-col justify-between">
+<div className="space-y-4 flex flex-col justify-between">
         <img src="/illustration.png" alt="Transfert Congo-Kenya" className="w-full max-w-md mx-auto" />
         
         <div>
@@ -270,7 +270,7 @@ body { overflow-x: hidden; max-width: 100vw; }
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
             <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
             <div>
