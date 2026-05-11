@@ -100,7 +100,7 @@ const App = () => {
   };
 
   return (
-   <div className="min-h-screen bg-[#02040a] text-slate-100 font-['Questrial'] antialiased selection:bg-purple-500/30 overflow-x-hidden">
+   <div className="min-h-screen bg-[#02040a] text-slate-100 font-['Questrial'] antialiased selection:bg-purple-500/30 overflow-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;0,800;1,900&family=Questrial&display=swap');
         .font-heading { font-family: 'Poppins', sans-serif; }
