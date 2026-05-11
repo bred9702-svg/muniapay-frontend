@@ -274,42 +274,64 @@ html, body {
         </div>
 
         <div className="space-y-3">
-          <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
-            <p className="text-xs text-slate-400 mt-1 break-words">
-            <div>
-              <p className="text-sm font-heading font-black text-white">Banques fermées la nuit</p>
-              <p className="text-xs text-slate-400 mt-1 break-words">Les ATM ne sont pas toujours accessibles quand l'urgence frappe.</p>
-            </div>
-          </div>
 
-         <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
-            <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-heading font-black text-white">Une lettre, et tout est bloqué</p>
-              <p className="text-xs text-slate-400 mt-1 break-words">Une erreur d'orthographe sur le nom et votre argent reste coincé.</p>
-            </div>
-          </div>
+  <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
+    <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+    
+    <div>
+      <p className="text-sm font-heading font-black text-white">
+        Banques fermées la nuit
+      </p>
 
-          <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
-            <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-heading font-black text-white">Screenshot WhatsApp obligatoire</p>
-              <p className="text-xs text-slate-400 mt-1 break-words">Sans la capture envoyée, le bénéficiaire ne reçoit rien.</p>
-            </div>
-          </div>
-
-          <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
-            <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-heading font-black text-white">MuniaPay : direct sur le téléphone</p>
-              <p className="text-xs text-slate-400 mt-1 break-words">En quelques minutes, l'argent arrive sur M-Pesa. C'est tout.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <p className="text-xs text-slate-400 mt-1 break-words">
+        Les ATM ne sont pas toujours accessibles quand l'urgence frappe.
+      </p>
     </div>
   </div>
+
+  <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
+    <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+    
+    <div>
+      <p className="text-sm font-heading font-black text-white">
+        Une lettre, et tout est bloqué
+      </p>
+
+      <p className="text-xs text-slate-400 mt-1 break-words">
+        Une erreur d'orthographe sur le nom et votre argent reste coincé.
+      </p>
+    </div>
+  </div>
+
+  <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
+    <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+    
+    <div>
+      <p className="text-sm font-heading font-black text-white">
+        Screenshot WhatsApp obligatoire
+      </p>
+
+      <p className="text-xs text-slate-400 mt-1 break-words">
+        Sans la capture envoyée, le bénéficiaire ne reçoit rien.
+      </p>
+    </div>
+  </div>
+
+  <div className="w-full flex items-start gap-3 p-4 bg-green-500/5 border border-green-500/20 rounded-2xl">
+    <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+    
+    <div>
+      <p className="text-sm font-heading font-black text-white">
+        MuniaPay : direct sur le téléphone
+      </p>
+
+      <p className="text-xs text-slate-400 mt-1 break-words">
+        En quelques minutes, l'argent arrive sur M-Pesa. C'est tout.
+      </p>
+    </div>
+  </div>
+
+</div>
 </section>
 
       <section className="py-20 md:py-32 relative">
