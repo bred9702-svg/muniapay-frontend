@@ -152,8 +152,8 @@ html, body {
 }
       `}</style>
 
-      <div className="orb w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-purple-600/20 -top-24 -left-24 max-w-full" />
-<div className="orb w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-indigo-600/15 bottom-0 right-0 max-w-full" style={{ animationDelay: '-7s' }} />
+      {/* <div className="orb w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-purple-600/20 -top-24 -left-24 max-w-full" /> */}
+{/* <div className="orb w-[250px] h-[250px] md:w-[400px] md:h-[400px] bg-indigo-600/15 bottom-0 right-0 max-w-full" style={{ animationDelay: '-7s' }} /> */}
 
      <nav className={`fixed top-0 left-0 right-0 w-full z-50 py-4 md:py-6 transition-all duration-500 ${isScrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/5' : ''}`}>
         <div className="flex items-center justify-between max-w-6xl mx-auto gap-4">
