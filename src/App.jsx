@@ -195,65 +195,119 @@ body { overflow-x: hidden; max-width: 100vw; }
         </div>
       </section>
 
-      <section className="py-12 md:py-24 relative" id="calculateur">
-        <div className="container mx-auto px-4">
-          <div className="max-w-xl mx-auto glass-card p-6 md:p-10 rounded-3xl shadow-2xl border border-white/20">
-            <div className="space-y-6 text-white">
-              <div className="flex items-center justify-between bg-black/50 p-5 rounded-2xl border border-white/10">
-                <div className="flex flex-col">
-                  <span className="text-xs font-black text-purple-400 uppercase tracking-widest mb-1 font-heading">Trajet des fonds</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">{isRDCToKen ? '🇨🇩' : '🇰🇪'}</span>
-                    <span className="text-white/40">→</span>
-                    <span className="text-xl">{isRDCToKen ? '🇰🇪' : '🇨🇩'}</span>
-                    <span className="text-xs font-black font-heading uppercase ml-1 text-white/60">
-                      {isRDCToKen ? 'Congo vers Kenya' : 'Kenya vers Congo'}
-                    </span>
-                  </div>
-                </div>
-                <button onClick={() => setDirection(d => d === 'RDC_TO_KEN' ? 'KEN_TO_RDC' : 'RDC_TO_KEN')} className="p-3 bg-white/5 rounded-xl border border-white/10 text-white hover:bg-purple-600 transition-all">
-                  <RefreshCw className="w-4 h-4" />
-                </button>
+     <section className="py-12 md:py-24 relative" id="calculateur">
+  <div className="container mx-auto px-4">
+    <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">
+      
+      {/* CALCULATEUR À GAUCHE */}
+      <div className="glass-card p-6 md:p-10 rounded-3xl shadow-2xl border border-white/20">
+        <div className="space-y-6 text-white">
+          <div className="flex items-center justify-between bg-black/50 p-5 rounded-2xl border border-white/10">
+            <div className="flex flex-col">
+              <span className="text-xs font-black text-purple-400 uppercase tracking-widest mb-1 font-heading">Trajet des fonds</span>
+              <div className="flex items-center gap-2">
+                <span className="text-xl">{isRDCToKen ? '🇨🇩' : '🇰🇪'}</span>
+                <span className="text-white/40">→</span>
+                <span className="text-xl">{isRDCToKen ? '🇰🇪' : '🇨🇩'}</span>
+                <span className="text-xs font-black font-heading uppercase ml-1 text-white/60">
+                  {isRDCToKen ? 'Congo vers Kenya' : 'Kenya vers Congo'}
+                </span>
               </div>
+            </div>
+            <button onClick={() => setDirection(d => d === 'RDC_TO_KEN' ? 'KEN_TO_RDC' : 'RDC_TO_KEN')} className="p-3 bg-white/5 rounded-xl border border-white/10 text-white hover:bg-purple-600 transition-all">
+              <RefreshCw className="w-4 h-4" />
+            </button>
+          </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <label className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-3 font-heading">Vous envoyez</label>
-                <div className="flex justify-between items-center gap-2">
-                  <div className="flex items-baseline gap-1.5 flex-1">
-                    <span className="text-2xl font-heading font-black text-purple-400">{isRDCToKen ? '$' : 'KES'}</span>
-                    <input type="number" value={inputAmount} onChange={(e) => setInputAmount(parseFloat(e.target.value) || 0)} className="bg-transparent text-4xl font-heading font-black outline-none w-full text-white" min="5" max="500" />
-                  </div>
-                  <div className="flex items-center gap-2 bg-black/60 px-4 py-2 rounded-xl border border-white/10">
-                    <span className="text-sm">{isRDCToKen ? '🇨🇩' : '🇰🇪'}</span>
-                    <span className="font-black text-xs font-heading">{isRDCToKen ? 'USD' : 'KES'}</span>
-                  </div>
-                </div>
-                {formErrors.amount && <p className="text-red-400 text-xs mt-2 font-heading">{formErrors.amount}</p>}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+            <label className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-3 font-heading">Vous envoyez</label>
+            <div className="flex justify-between items-center gap-2">
+              <div className="flex items-baseline gap-1.5 flex-1">
+                <span className="text-2xl font-heading font-black text-purple-400">{isRDCToKen ? '$' : 'KES'}</span>
+                <input type="number" value={inputAmount} onChange={(e) => setInputAmount(parseFloat(e.target.value) || 0)} className="bg-transparent text-4xl font-heading font-black outline-none w-full text-white" min="5" max="500" />
               </div>
-
-              <div className="bg-purple-600/5 border border-purple-500/30 rounded-2xl p-6">
-                <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Ils reçoivent (en 15 min)</label>
-                <div className="flex justify-between items-center gap-2">
-                  <div className="text-4xl font-heading font-black w-full">
-                    {finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                  </div>
-                  <div className="flex items-center gap-2 bg-purple-500/20 px-4 py-2 rounded-xl border border-purple-500/30">
-                    <span className="text-sm">{isRDCToKen ? '🇰🇪' : '🇨🇩'}</span>
-                    <span className="font-black text-xs font-heading">{isRDCToKen ? 'KES' : 'USD'}</span>
-                  </div>
-                </div>
-                <div className="mt-3 pt-3 border-t border-white/5 text-xs text-center font-black text-slate-500 uppercase tracking-widest">
-                  Frais {feeAmount.toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) • Simple et honnête
-                </div>
+              <div className="flex items-center gap-2 bg-black/60 px-4 py-2 rounded-xl border border-white/10">
+                <span className="text-sm">{isRDCToKen ? '🇨🇩' : '🇰🇪'}</span>
+                <span className="font-black text-xs font-heading">{isRDCToKen ? 'USD' : 'KES'}</span>
               </div>
+            </div>
+            {formErrors.amount && <p className="text-red-400 text-xs mt-2 font-heading">{formErrors.amount}</p>}
+          </div>
 
-              <button onClick={() => { setShowModal(true); setError(''); setFormErrors({}); }} className="w-full py-5 bg-white text-black rounded-2xl font-heading font-black text-xs uppercase tracking-widest shadow-xl hover:bg-slate-200 transition-all">
-                C'est parti !
-              </button>
+          <div className="bg-purple-600/5 border border-purple-500/30 rounded-2xl p-6">
+            <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Ils reçoivent (en 15 min)</label>
+            <div className="flex justify-between items-center gap-2">
+              <div className="text-4xl font-heading font-black w-full">
+                {finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              </div>
+              <div className="flex items-center gap-2 bg-purple-500/20 px-4 py-2 rounded-xl border border-purple-500/30">
+                <span className="text-sm">{isRDCToKen ? '🇰🇪' : '🇨🇩'}</span>
+                <span className="font-black text-xs font-heading">{isRDCToKen ? 'KES' : 'USD'}</span>
+              </div>
+            </div>
+            <div className="mt-3 pt-3 border-t border-white/5 text-xs text-center font-black text-slate-500 uppercase tracking-widest">
+              Frais {feeAmount.toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) • Simple et honnête
+            </div>
+          </div>
+
+          <button onClick={() => { setShowModal(true); setError(''); setFormErrors({}); }} className="w-full py-5 bg-white text-black rounded-2xl font-heading font-black text-xs uppercase tracking-widest shadow-xl hover:bg-slate-200 transition-all">
+            C'est parti !
+          </button>
+        </div>
+      </div>
+
+      {/* STORYTELLING À DROITE */}
+      <div className="space-y-6">
+        <img src="/illustration.png" alt="Transfert Congo-Kenya" className="w-full max-w-md mx-auto" />
+        
+        <div>
+          <h3 className="text-2xl md:text-3xl font-heading font-black text-white uppercase italic mb-4">
+            Des milliers de familles. <br />
+            <span className="text-purple-400">Un seul vrai problème.</span>
+          </h3>
+          <p className="text-slate-400 text-sm md:text-base mb-6 leading-relaxed">
+            Entre la RDC et le Kenya, envoyer de l'argent reste un parcours du combattant.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          <div className="flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
+            <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-heading font-black text-white">Banques fermées la nuit</p>
+              <p className="text-xs text-slate-400 mt-1">Les ATM ne sont pas toujours accessibles quand l'urgence frappe.</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
+            <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-heading font-black text-white">Une lettre, et tout est bloqué</p>
+              <p className="text-xs text-slate-400 mt-1">Une erreur d'orthographe sur le nom et votre argent reste coincé.</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
+            <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-heading font-black text-white">Screenshot WhatsApp obligatoire</p>
+              <p className="text-xs text-slate-400 mt-1">Sans la capture envoyée, le bénéficiaire ne reçoit rien.</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3 p-4 bg-green-500/5 border border-green-500/20 rounded-2xl">
+            <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-heading font-black text-white">MuniaPay : direct sur le téléphone</p>
+              <p className="text-xs text-slate-400 mt-1">En quelques minutes, l'argent arrive sur M-Pesa. C'est tout.</p>
             </div>
           </div>
         </div>
-      </section>
+
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="py-20 md:py-32 relative">
         <div className="container mx-auto max-w-7xl px-6 relative z-10">
