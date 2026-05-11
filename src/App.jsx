@@ -269,7 +269,7 @@ className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black
           </p>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
             <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
             <div>
@@ -381,7 +381,7 @@ className="glass-card text-white px-5 py-2 md:px-8 md:py-3 rounded-xl font-black
             <h2 className="text-xs font-black text-purple-500 uppercase tracking-widest font-heading italic mb-4">Questions fréquentes</h2>
             <h3 className="text-3xl md:text-6xl font-black tracking-tighter uppercase italic font-heading text-white">Des réponses à <br/><span className="text-white/20">vos doutes.</span></h3>
           </div>
-          <div className="space-y-4 mb-20">
+          <div className="space-y-6 mb-20">
             {[
               { q: "C'est vraiment instantané ?", a: "Absolument. Le bénéficiaire reçoit ses fonds sur M-Pesa en moyenne sous 10 à 15 minutes." },
               { q: "Y a-t-il une limite de transfert ?", a: "Minimum 5$ et maximum 500$ par transaction. Contactez-nous pour augmenter ce plafond." },
