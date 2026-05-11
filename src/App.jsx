@@ -129,13 +129,19 @@ const App = () => {
           0% { transform: translate(0, 0) scale(1); }
           100% { transform: translate(60px, 30px) scale(1.2); }
         }
-        .section-rounded {
-          border-radius: 3rem;
-          margin-left: 1rem;
-          margin-right: 1rem;
-        }
-        @media (min-width: 768px) {
-          .section-rounded { border-radius: 5rem; margin-left: 2rem; margin-right: 2rem; }
+       .section-rounded {
+  border-radius: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: calc(100% - 2rem);
+}
+@media (min-width: 768px) {
+  .section-rounded { 
+    border-radius: 5rem; 
+    margin-left: 2rem; 
+    margin-right: 2rem;
+    width: calc(100% - 4rem);
+  }
         }
         @keyframes reveal {
           from { opacity: 0; transform: translateY(20px) scale(0.98); }
