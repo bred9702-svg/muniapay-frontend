@@ -100,7 +100,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#02040a] text-slate-100 font-['Questrial'] antialiased selection:bg-purple-500/30 overflow-x-hidden">
+   <div className="min-h-screen bg-[#02040a] text-slate-100 font-['Questrial'] antialiased selection:bg-purple-500/30 overflow-x-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;0,800;1,900&family=Questrial&display=swap');
         .font-heading { font-family: 'Poppins', sans-serif; }
@@ -142,6 +142,8 @@ const App = () => {
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .animate-reveal { animation: reveal 0.45s ease forwards; }
+        * { box-sizing: border-box; }
+body { overflow-x: hidden; max-width: 100vw; }
       `}</style>
 
       <div className="orb w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-purple-600/20 -top-24 -left-24" />
