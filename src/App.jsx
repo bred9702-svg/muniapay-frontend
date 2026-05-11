@@ -133,14 +133,12 @@ const App = () => {
   border-radius: 3rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  width: calc(100% - 2rem);
 }
 @media (min-width: 768px) {
   .section-rounded { 
     border-radius: 5rem; 
     margin-left: 2rem; 
     margin-right: 2rem;
-    width: calc(100% - 4rem);
   }
         }
         @keyframes reveal {
