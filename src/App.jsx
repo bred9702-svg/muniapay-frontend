@@ -197,7 +197,7 @@ body { overflow-x: hidden; max-width: 100vw; }
 
      <section className="py-12 md:py-24 relative" id="calculateur">
   <div className="container mx-auto px-4">
-    <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">
+   <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-center min-w-0">
       
       {/* CALCULATEUR À GAUCHE */}
       <div className="glass-card p-6 md:p-10 rounded-3xl shadow-2xl border border-white/20">
@@ -257,7 +257,7 @@ body { overflow-x: hidden; max-width: 100vw; }
       </div>
 
    {/* STORYTELLING À DROITE */}
-<div className="space-y-6">
+<div className="space-y-6 min-w-0">
         <img src="/illustration.png" alt="Transfert Congo-Kenya" className="w-full max-w-md mx-auto" />
         
         <div>
