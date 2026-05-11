@@ -328,8 +328,10 @@ html, body {
       <p className="text-xs text-slate-400 mt-1 break-words">
         En quelques minutes, l'argent arrive sur M-Pesa. C'est tout.
       </p>
+      </p>
     </div>
   </div>
+</div>
 </div>
 </div>
 </section>
