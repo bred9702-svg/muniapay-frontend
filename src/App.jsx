@@ -349,14 +349,14 @@ const App = () => {
       <section className="py-20 md:py-32 bg-[#0a0c14] section-rounded my-12 md:my-20 relative overflow-hidden border border-white/5 shadow-2xl">
         <div className="container mx-auto max-w-7xl px-8 md:px-16 text-white">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-xs font-black text-purple-500 uppercase tracking-widest font-heading italic">Fini les tracas</h2>
-            <h3 className="text-3xl md:text-6xl font-black tracking-tighter uppercase italic font-heading">L'urgence n'attend pas.</h3>
+            <h2 className="text-xs font-black text-purple-500 uppercase tracking-widest font-heading italic">Transparence totale</h2>
+            <h3 className="text-3xl md:text-6xl font-black tracking-tighter uppercase italic font-heading">Pas de surprise. Jamais.</h3>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Oubliez Western.", desc: "C'est votre numéro de téléphone qui compte. Zéro blocage.", icon: <X className="w-5 h-5"/> },
-              { title: "Même à minuit.", desc: "L'argent arrive direct sur M-Pesa. Pas besoin d'ATM ouvert.", icon: <Clock className="w-5 h-5"/> },
-              { title: "Zéro capture.", desc: "Notre système voit tout automatiquement.", icon: <Lock className="w-5 h-5"/> }
+              { title: "Taux clair.", desc: "Vous savez exactement combien il recevra avant d'envoyer. Aucune mauvaise surprise.", icon: <CheckCircle2 className="w-5 h-5"/> },
+              { title: "7% tout compris.", desc: "Aucun frais caché, aucune commission ajoutée. Le prix affiché est le prix final.", icon: <Lock className="w-5 h-5"/> },
+              { title: "Numéro de suivi.", desc: "Chaque transaction reçoit un identifiant unique. Gardez une preuve à tout moment.", icon: <Clock className="w-5 h-5"/> }
             ].map((item, i) => (
               <div key={i} className="glass-card p-8 md:p-10 rounded-3xl border border-white/10 h-full flex flex-col justify-between">
                 <h4 className="text-xl font-black font-heading uppercase mb-3 italic">{item.title}</h4>
