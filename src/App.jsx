@@ -174,12 +174,12 @@ const App = () => {
             Transferts Instantanés : RDC ↔ Kenya
           </div>
           <h1 className="text-4xl md:text-8xl lg:text-9xl font-heading font-black italic leading-tight tracking-tighter uppercase mb-10 text-white">
-            L'amour n'a pas <br />
-            <span className="text-gradient">de distance.</span>
-          </h1>
-          <p className="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-16">
-            Envoyez du soutien à ceux qui comptent vraiment. Pas de bureau à visiter, pas de capture d'écran à envoyer.
-          </p>
+  Le RDC et le Kenya, <br />
+  <span className="text-gradient">enfin connectés.</span>
+</h1>
+<p className="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-16">
+  Envoyez et recevez de l'argent entre la RDC et le Kenya en quelques minutes. Pas de banque, pas de paperasse, pas de capture d'écran. Juste votre téléphone.
+</p>
           <button
             onClick={() => document.getElementById('calculateur').scrollIntoView({ behavior: 'smooth' })}
             className="relative px-12 py-6 rounded-2xl overflow-hidden shadow-2xl transition-transform hover:scale-105"
