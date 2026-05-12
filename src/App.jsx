@@ -320,16 +320,15 @@ html, body {
   <div className="w-full flex items-start gap-3 p-4 bg-green-500/5 border border-green-500/20 rounded-2xl">
     <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
     
-    <div>
+   <div>
       <p className="text-sm font-heading font-black text-white">
         MuniaPay : direct sur le téléphone
       </p>
-
      <p className="text-xs text-slate-400 mt-1 break-words">
         En quelques minutes, l'argent arrive sur M-Pesa. C'est tout.
       </p>
-    </div>
   </div>
+</div>
 </div>
   </div>
   </div>
