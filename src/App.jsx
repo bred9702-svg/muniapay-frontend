@@ -228,7 +228,7 @@ const App = () => {
                 </div>
 
                 <div className="bg-purple-600/5 border border-purple-500/30 rounded-2xl p-6">
-                  <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Le bénéficiaire reçoit (en 3 minutes)</label>
+                  <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Le bénéficiaire reçoit (en quelques minutes)</label>
                   <div className="flex justify-between items-center gap-2">
                     <div className="text-4xl font-heading font-black w-full">
                       {finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -243,7 +243,7 @@ const App = () => {
                 </div>
 
                 <button onClick={() => { setShowModal(true); setError(''); setFormErrors({}); }} className="w-full py-5 bg-white text-black rounded-2xl font-heading font-black text-xs uppercase tracking-widest shadow-xl hover:bg-slate-200 transition-all">
-                  Envoyer maintenant
+                  Envoyez maintenant
                 </button>
               </div>
             </div>
@@ -431,7 +431,7 @@ const App = () => {
                 </div>
                 <h4 className="text-2xl font-black uppercase italic font-heading mb-3 text-white">Transfert initié !</h4>
                 <p className="text-slate-400 max-w-md mx-auto leading-relaxed mb-6">
-                  Votre famille recevra l'argent sous environ 15 minutes.
+                  Le bénéficiaire recevra l'argent sous environ 15 minutes.
                 </p>
                 {transactionId && (
                   <div className="bg-white/5 border border-white/10 rounded-xl p-4">
@@ -454,7 +454,7 @@ const App = () => {
                     <span className="text-slate-400">-{feeAmount.toFixed(2)} {isRDCToKen ? 'USD' : 'KES'}</span>
                   </div>
                   <div className="flex justify-between items-center mt-3 pt-3 border-t border-white/10">
-                    <span className="text-purple-400 font-black text-sm uppercase tracking-widest font-heading">Ils reçoivent</span>
+                    <span className="text-purple-400 font-black text-sm uppercase tracking-widest font-heading">Il reçoit</span>
                     <span className="text-white font-black text-lg">{finalAmount.toLocaleString(undefined, {maximumFractionDigits: 2})} {isRDCToKen ? 'KES' : 'USD'}</span>
                   </div>
                 </div>
@@ -525,7 +525,7 @@ const App = () => {
 
   <input
     type="tel"
-    placeholder="812 345 678"
+    placeholder="711 345 678"
     required
     className={`flex-1 min-w-0 bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${
       formErrors.receiverPhone ? 'border-red-500' : 'border-white/10'
@@ -549,7 +549,7 @@ const App = () => {
                     </div>
                   </div>
                   <button type="submit" disabled={isLoading} className="w-full py-5 bg-purple-600 text-white rounded-xl font-black uppercase tracking-widest font-heading shadow-xl hover:bg-purple-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
-                    {isLoading ? "Traitement en cours..." : "Confirmer l'envoi"}
+                    {isLoading ? "Traitement en cours..." : "Confirmez l'envoi"}
                   </button>
                 </form>
               </>
