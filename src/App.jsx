@@ -310,10 +310,10 @@ const App = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              { id: '01', title: 'Détails', desc: "Entrez les informations de l'expéditeur et du bénéficiaire.", icon: <MessageSquare /> },
-              { id: '02', title: 'Paiement', desc: "Payez via votre compte Mobile Money habituel.", icon: <Smartphone /> },
-              { id: '03', title: 'Réception', desc: "Le bénéficiaire reçoit l'argent sur M-Pesa en moins de 15 minutes.", icon: <CheckCircle2 /> }
-            ].map((step, i) => (
+  { id: '01', title: 'Remplissez les détails', desc: "Renseignez le montant, votre numéro Mobile Money et celui du bénéficiaire. Le calcul est instantané : vous savez exactement combien il recevra. Rassurez-vous d'avoir suffisamment de fonds sur votre téléphone, puis appuyez sur Confirmer l'envoi.", icon: <MessageSquare /> },
+  { id: '02', title: 'Validez le paiement', desc: "Confirmez sur votre téléphone via votre wallet Mobile Money habituel en tapant votre PIN (ex. Vodacom M-Pesa RDC ou M-Pesa Kenya). Aucune carte bancaire, aucun déplacement — juste avec votre téléphone.", icon: <Smartphone /> },
+  { id: '03', title: "L'argent arrive", desc: "En quelques minutes, le bénéficiaire reçoit l'argent et une notification sur son téléphone. Pas de capture d'écran à envoyer, pas de code à transmettre. C'est fait.", icon: <CheckCircle2 /> }
+].map((step, i) => (
               <div key={i} className="glass-card p-10 rounded-3xl hover:border-purple-500/50 transition-all relative overflow-hidden">
                 <div className="absolute -top-6 -right-6 text-8xl font-black text-white/5 font-heading italic">{step.id}</div>
                 <div className="w-14 h-14 bg-purple-600/20 rounded-2xl flex items-center justify-center text-purple-400 mb-8">{step.icon}</div>
