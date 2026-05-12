@@ -328,11 +328,9 @@ html, body {
       <p className="text-xs text-slate-400 mt-1 break-words">
         En quelques minutes, l'argent arrive sur M-Pesa. C'est tout.
       </p>
-      </div>
+    </div>
+  </div>
 </div>
-
-</div>
-
 </section>
 
       <section className="py-20 md:py-32 relative">
