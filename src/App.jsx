@@ -331,6 +331,7 @@ html, body {
     </div>
   </div>
 </div>
+  </div>
 </section>
 
       <section className="py-20 md:py-32 relative">
