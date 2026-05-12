@@ -173,7 +173,7 @@ const App = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
             Transferts Instantanés : RDC ↔ Kenya
           </div>
-          <h1 className="text-4xl md:text-8xl lg:text-9xl font-heading font-black italic leading-tight tracking-tighter uppercase mb-10 text-white">
+          <h1 className="text-3xl md:text-7xl lg:text-8xl font-heading font-black italic leading-tight tracking-tighter uppercase mb-10 text-white">
   La RDC et le Kenya, <br />
   <span className="text-gradient">connectés.</span>
 </h1>
