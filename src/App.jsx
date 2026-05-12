@@ -326,9 +326,6 @@ const App = () => {
       </section>
 
       <section className="py-20 md:py-32 bg-white section-rounded relative overflow-hidden shadow-2xl">
-        <div className="container mx-auto max-w-7xl px-8 md:px-16 relative z-10">
-          <div className="text-center mb-16 md:mb-24">
-           <section className="py-20 md:py-32 bg-white section-rounded relative overflow-hidden shadow-2xl">
   <div className="container mx-auto max-w-4xl px-8 md:px-16 relative z-10 text-center">
     <h2 className="text-xs font-black text-purple-600 uppercase tracking-widest font-heading italic mb-4">Les premiers pionniers</h2>
     <h3 className="text-3xl md:text-6xl font-black tracking-tighter uppercase italic font-heading text-slate-900 mb-8">
