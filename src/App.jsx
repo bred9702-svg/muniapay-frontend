@@ -255,9 +255,8 @@ const App = () => {
   className="block w-full max-w-full h-auto object-contain"
 />
               <div>
-                <h3 className="text-base font-heading font-black text-white uppercase italic mb-4">
-  Des milliers de congolais. <br />
-  <span className="text-purple-400">Un seul problème.</span>
+     <h3 className="text-base font-heading font-black text-white uppercase italic mb-4">
+  Des milliers de congolais. <span className="text-purple-400">Un seul problème.</span>
 </h3>
                 <p className="text-slate-400 text-sm md:text-base mb-6 leading-relaxed">
                   Entre la RDC et le Kenya, envoyer de l'argent reste un vrai challenge.
