@@ -328,25 +328,26 @@ const App = () => {
       <section className="py-20 md:py-32 bg-white section-rounded relative overflow-hidden shadow-2xl">
         <div className="container mx-auto max-w-7xl px-8 md:px-16 relative z-10">
           <div className="text-center mb-16 md:mb-24">
-            <h2 className="text-xs font-black text-purple-600 uppercase tracking-widest font-heading italic mb-4">Paroles de la famille</h2>
-            <h3 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic font-heading text-slate-900">
-              On ne blague pas <br /><span className="text-purple-500/20">avec la confiance.</span>
-            </h3>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {[
-              { name: "Maman Sarah", text: "Avant, mon fils devait aller à la banque... Là, je reçois mon M-Pesa même à minuit.", offset: "" },
-              { name: "Junior K.", text: "J'utilise Munia Pay pour mon loyer au Kenya depuis le Congo. C'est carré.", offset: "" },
-              { name: "Alain M.", text: "C'est le seul service qui ne me demande pas de scanner ma carte 3 fois.", offset: "" }
-            ].map((t, i) => (
-              <div key={i} className={`bg-slate-50 p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col justify-between ${t.offset}`}>
-                <p className="font-heading font-black uppercase text-sm italic text-slate-900 mb-2">{t.name}</p>
-                <p className="text-slate-600 text-lg italic">"{t.text}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+           <section className="py-20 md:py-32 bg-white section-rounded relative overflow-hidden shadow-2xl">
+  <div className="container mx-auto max-w-4xl px-8 md:px-16 relative z-10 text-center">
+    <h2 className="text-xs font-black text-purple-600 uppercase tracking-widest font-heading italic mb-4">Les premiers pionniers</h2>
+    <h3 className="text-3xl md:text-6xl font-black tracking-tighter uppercase italic font-heading text-slate-900 mb-8">
+      Bientôt, <br /><span className="text-purple-500/30">votre histoire ici.</span>
+    </h3>
+    <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+      Les histoires de nos premiers utilisateurs s'afficheront bientôt à cette place. Voulez-vous être l'un d'eux ? Faites votre premier transfert et partagez votre expérience.
+    </p>
+    <a 
+      href="https://wa.me/254742599719?text=Je%20veux%20etre%20parmi%20les%20premiers%20utilisateurs%20de%20MuniaPay" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 text-white rounded-2xl font-heading font-black text-xs uppercase tracking-widest hover:bg-purple-700 transition-all shadow-xl"
+    >
+      <MessageCircle className="w-4 h-4" />
+      Devenir pionnier
+    </a>
+  </div>
+</section>
 
       <section className="py-20 md:py-32 bg-[#0a0c14] section-rounded my-12 md:my-20 relative overflow-hidden border border-white/5 shadow-2xl">
         <div className="container mx-auto max-w-7xl px-8 md:px-16 text-white">
