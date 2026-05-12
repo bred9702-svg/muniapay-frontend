@@ -191,7 +191,7 @@ const App = () => {
       </section>
 
       <section className="py-12 md:py-24 relative" id="calculateur">
-        <div className="container mx-auto px-4 overflow-hidden">
+        <div className="w-full max-w-5xl mx-auto px-4 overflow-hidden">
           <div className="grid lg:grid-cols-[1fr_minmax(0,1fr)] gap-6 xl:gap-8 max-w-5xl mx-auto items-center min-w-0">
             
             <div className="glass-card p-6 md:p-10 rounded-3xl shadow-2xl border border-white/20">
@@ -250,10 +250,10 @@ const App = () => {
 
             <div className="space-y-6 min-w-0">
               <img 
-                src="/illustration.png" 
-                alt="Transfert Congo-Kenya" 
-                <div className="container mx-auto px-4 max-w-full overflow-hidden">
-              />
+  src="/illustration.png" 
+  alt="Transfert Congo-Kenya" 
+  className="block w-full max-w-full h-auto object-contain"
+/>
               <div>
                 <h3 className="text-2xl md:text-3xl font-heading font-black text-white uppercase italic mb-4">
                   Des milliers de familles. <br />
