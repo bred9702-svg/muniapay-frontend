@@ -24,6 +24,8 @@ const App = () => {
   const [error, setError] = useState('');
   const [transactionId, setTransactionId] = useState('');
   const [formErrors, setFormErrors] = useState({});
+  const [transactionStatus, setTransactionStatus] = useState('');
+  const [failureReason, setFailureReason] = useState('');
 
   const [formData, setFormData] = useState({
     senderName: '',
@@ -66,6 +68,27 @@ const App = () => {
     return errors;
   };
 
+  const pollStatus = (txId) => {
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`https://fintrans-backend.onrender.com/transfer/${txId}`);
+        const data = await res.json();
+        setTransactionStatus(data.status);
+        
+        if (data.status === 'COMPLETED' || data.status === 'FAILED') {
+          clearInterval(interval);
+          if (data.status === 'FAILED') {
+            setFailureReason(data.failure_reason || "La transaction n'a pas pu aboutir.");
+          }
+        }
+      } catch (err) {
+        console.error('Erreur polling:', err);
+      }
+    }, 3000);
+    
+    setTimeout(() => clearInterval(interval), 300000);
+  };
+
   const handleTransfer = async (e) => {
     e.preventDefault();
     setError('');
@@ -81,14 +104,10 @@ const App = () => {
       if (response.ok) {
         const data = await response.json();
         setTransactionId(data.id);
-        setIsSuccess(true);
-        setTimeout(() => {
-          setShowModal(false);
-          setIsSuccess(false);
-          setTransactionId('');
-          setFormData({ senderName: '', senderPhone: '', receiverName: '', receiverPhone: '' });
-          setFormErrors({});
-        }, 5000);
+setTransactionStatus('COLLECTING');
+setFailureReason('');
+setIsSuccess(true);
+pollStatus(data.id);
       } else {
         setError("Une erreur est survenue. Veuillez réessayer.");
       }
@@ -443,20 +462,58 @@ const App = () => {
 
             {isSuccess ? (
               <div className="text-center py-8">
-                <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl">✅</span>
-                </div>
-                <h4 className="text-2xl font-black uppercase italic font-heading mb-3 text-white">Transfert initié !</h4>
-                <p className="text-slate-400 max-w-md mx-auto leading-relaxed mb-6">
-                  Le bénéficiaire recevra l'argent sous environ 15 minutes.
-                </p>
-                {transactionId && (
-                  <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                    <p className="text-xs text-slate-500 uppercase tracking-widest mb-1 font-heading">Numéro de suivi</p>
-                    <p className="text-purple-400 font-black text-sm font-mono">{transactionId.slice(0, 8).toUpperCase()}</p>
-                  </div>
-                )}
-              </div>
+  <div className={`w-20 h-20 rounded-full border flex items-center justify-center mx-auto mb-6 ${
+    transactionStatus === 'COMPLETED' ? 'bg-green-500/10 border-green-500/30' :
+    transactionStatus === 'FAILED' ? 'bg-red-500/10 border-red-500/30' :
+    'bg-purple-500/10 border-purple-500/30'
+  }`}>
+    {transactionStatus === 'COMPLETED' && <span className="text-4xl">✅</span>}
+    {transactionStatus === 'FAILED' && <span className="text-4xl">❌</span>}
+    {(transactionStatus === 'COLLECTING' || transactionStatus === 'SENDING' || transactionStatus === 'PENDING') && 
+      <div className="w-8 h-8 border-4 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
+    }
+  </div>
+
+  <h4 className="text-2xl font-black uppercase italic font-heading mb-3 text-white">
+    {transactionStatus === 'COMPLETED' && 'Transfert réussi !'}
+    {transactionStatus === 'FAILED' && 'Transfert échoué'}
+    {transactionStatus === 'COLLECTING' && 'Confirmation en cours...'}
+    {transactionStatus === 'SENDING' && 'Envoi vers le bénéficiaire...'}
+    {transactionStatus === 'PENDING' && 'Initialisation...'}
+  </h4>
+
+  <p className="text-slate-400 max-w-md mx-auto leading-relaxed mb-6">
+    {transactionStatus === 'COMPLETED' && "L'argent a bien été envoyé. Le bénéficiaire l'a reçu sur son Mobile Money."}
+    {transactionStatus === 'FAILED' && failureReason}
+    {transactionStatus === 'COLLECTING' && "Veuillez confirmer le paiement sur votre téléphone en tapant votre PIN Mobile Money."}
+    {transactionStatus === 'SENDING' && "Le paiement est confirmé. L'argent est en route vers le bénéficiaire."}
+    {transactionStatus === 'PENDING' && "Préparation de votre transfert..."}
+  </p>
+
+  {transactionId && (
+    <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-4">
+      <p className="text-xs text-slate-500 uppercase tracking-widest mb-1 font-heading">Numéro de suivi</p>
+      <p className="text-purple-400 font-black text-sm font-mono">{transactionId.slice(0, 8).toUpperCase()}</p>
+    </div>
+  )}
+
+  {(transactionStatus === 'COMPLETED' || transactionStatus === 'FAILED') && (
+    <button 
+      onClick={() => {
+        setShowModal(false);
+        setIsSuccess(false);
+        setTransactionId('');
+        setTransactionStatus('');
+        setFailureReason('');
+        setFormData({ senderName: '', senderPhone: '', receiverName: '', receiverPhone: '' });
+        setFormErrors({});
+      }}
+      className="w-full py-4 bg-white text-black rounded-xl font-heading font-black text-xs uppercase tracking-widest hover:bg-slate-200 transition-all"
+    >
+      Fermer
+    </button>
+  )}
+</div>
             ) : (
               <>
                 <h3 className="text-2xl font-black font-heading text-white uppercase italic text-center mb-6">Dernière étape.</h3>
