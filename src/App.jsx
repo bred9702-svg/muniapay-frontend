@@ -198,7 +198,7 @@ const App = () => {
               <div className="space-y-6 text-white">
                 <div className="flex items-center justify-between bg-black/50 p-5 rounded-2xl border border-white/10">
                   <div className="flex flex-col">
-                    <span className="text-xs font-black text-purple-400 uppercase tracking-widest mb-1 font-heading">Trajet des fonds</span>
+                    <span className="text-xs font-black text-purple-400 uppercase tracking-widest mb-1 font-heading">Vous envoyez vers</span>
                     <div className="flex items-center gap-2">
                       <span className="text-xl">{isRDCToKen ? '🇨🇩' : '🇰🇪'}</span>
                       <span className="text-white/40">→</span>
@@ -214,7 +214,7 @@ const App = () => {
                 </div>
 
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-3 font-heading">Vous envoyez</label>
+                  <label className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-3 font-heading">Vous envoyez exactement</label>
                   <div className="flex justify-between items-center gap-2">
                     <div className="flex items-baseline gap-1.5 flex-1">
                       <span className="text-2xl font-heading font-black text-purple-400">{isRDCToKen ? '$' : 'KES'}</span>
@@ -228,7 +228,7 @@ const App = () => {
                 </div>
 
                 <div className="bg-purple-600/5 border border-purple-500/30 rounded-2xl p-6">
-                  <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Ils reçoivent (en 15 min)</label>
+                  <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Le bénéficiaire reçoit (en 3 minutes)</label>
                   <div className="flex justify-between items-center gap-2">
                     <div className="text-4xl font-heading font-black w-full">
                       {finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -238,12 +238,12 @@ const App = () => {
                     </div>
                   </div>
                   <div className="mt-3 pt-3 border-t border-white/5 text-xs text-center font-black text-slate-500 uppercase tracking-widest">
-                    Frais {feeAmount.toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) • Simple et honnête
+                    Frais {feeAmount.toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) • Aucun autre frais caché
                   </div>
                 </div>
 
                 <button onClick={() => { setShowModal(true); setError(''); setFormErrors({}); }} className="w-full py-5 bg-white text-black rounded-2xl font-heading font-black text-xs uppercase tracking-widest shadow-xl hover:bg-slate-200 transition-all">
-                  C'est parti !
+                  Envoyer maintenant
                 </button>
               </div>
             </div>
