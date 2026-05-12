@@ -192,7 +192,7 @@ const App = () => {
 
       <section className="py-12 md:py-24 relative" id="calculateur">
         <div className="container mx-auto px-4 overflow-hidden">
-          <div className="grid lg:grid-cols-2 gap-6 xl:gap-8 max-w-5xl xl:max-w-6xl mx-auto items-center min-w-0">
+          <div className="grid lg:grid-cols-[1fr_minmax(0,1fr)] gap-6 xl:gap-8 max-w-5xl mx-auto items-center min-w-0">
             
             <div className="glass-card p-6 md:p-10 rounded-3xl shadow-2xl border border-white/20">
               <div className="space-y-6 text-white">
