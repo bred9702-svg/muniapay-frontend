@@ -501,7 +501,7 @@ const App = () => {
 
   <input
     type="tel"
-    placeholder="812 345 678"
+    placeholder={isRDCToKen ? "812 345 678" : "711 345 678"}
     required
     className={`flex-1 min-w-0 bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${
       formErrors.senderPhone ? 'border-red-500' : 'border-white/10'
@@ -542,7 +542,7 @@ const App = () => {
 
   <input
     type="tel"
-    placeholder="711 345 678"
+   placeholder={isRDCToKen ? "711 345 678" : "812 345 678"}
     required
     className={`flex-1 min-w-0 bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${
       formErrors.receiverPhone ? 'border-red-500' : 'border-white/10'
