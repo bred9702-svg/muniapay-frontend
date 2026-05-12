@@ -375,10 +375,31 @@ const App = () => {
           </div>
           <div className="space-y-6 mb-20">
             {[
-              { q: "C'est vraiment instantané ?", a: "Absolument. Le bénéficiaire reçoit ses fonds sur M-Pesa en moyenne sous 10 à 15 minutes." },
-              { q: "Y a-t-il une limite de transfert ?", a: "Minimum 5$ et maximum 500$ par transaction. Contactez-nous pour augmenter ce plafond." },
-              { q: "Mes informations sont-elles sécurisées ?", a: "Nous utilisons un cryptage de bout en bout. Nous ne stockons jamais vos accès Mobile Money." }
-            ].map((item, i) => (
+  { 
+    q: "C'est vraiment instantané ?", 
+    a: "Oui. Le bénéficiaire reçoit ses fonds en moyenne sous 10 à 15 minutes. Dans de rares cas (opérateur saturé), cela peut prendre jusqu'à 30 minutes." 
+  },
+  { 
+    q: "Quels opérateurs Mobile Money sont supportés ?", 
+    a: "En RDC : Vodacom M-Pesa, Airtel Money et Orange Money. Au Kenya : M-Pesa (Safaricom)." 
+  },
+  { 
+    q: "Que se passe-t-il si le transfert échoue ?", 
+    a: "Vous êtes automatiquement remboursé sur votre compte Mobile Money sous 24h. Notre équipe vous contacte pour comprendre le problème et vous accompagner." 
+  },
+  { 
+    q: "Y a-t-il une limite de montant ?", 
+    a: "Minimum 5$ et maximum 500$ par transaction. Pour des montants plus élevés, contactez-nous sur WhatsApp et nous étudierons votre cas." 
+  },
+  { 
+    q: "Dois-je créer un compte ?", 
+    a: "Non. Aucune inscription, aucun mot de passe. Vous avez juste besoin de votre numéro Mobile Money pour envoyer ou recevoir." 
+  },
+  { 
+    q: "Mes informations sont-elles sécurisées ?", 
+    a: "Nous utilisons un cryptage de bout en bout. Nous ne stockons jamais vos codes PIN, vos mots de passe ou vos accès Mobile Money." 
+  }
+].map((item, i) => (
               <div key={i} className={`glass-card p-6 md:p-8 rounded-2xl cursor-pointer transition-all ${openFaq === i ? 'bg-purple-500/5 border-purple-500/30' : ''}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                 <div className="flex justify-between items-center text-white">
                   <h4 className="text-sm font-black font-heading uppercase italic">{item.q}</h4>
