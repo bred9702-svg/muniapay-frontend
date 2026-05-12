@@ -337,8 +337,8 @@ const App = () => {
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {[
               { name: "Maman Sarah", text: "Avant, mon fils devait aller à la banque... Là, je reçois mon M-Pesa même à minuit.", offset: "" },
-              { name: "Junior K.", text: "J'utilise Munia Pay pour mon loyer au Kenya depuis le Congo. C'est carré.", offset: "md:translate-y-6" },
-              { name: "Alain M.", text: "C'est le seul service qui ne me demande pas de scanner ma carte 3 fois.", offset: "md:translate-y-12" }
+              { name: "Junior K.", text: "J'utilise Munia Pay pour mon loyer au Kenya depuis le Congo. C'est carré.", offset: "" },
+              { name: "Alain M.", text: "C'est le seul service qui ne me demande pas de scanner ma carte 3 fois.", offset: "" }
             ].map((t, i) => (
               <div key={i} className={`bg-slate-50 p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col justify-between ${t.offset}`}>
                 <p className="font-heading font-black uppercase text-sm italic text-slate-900 mb-2">{t.name}</p>
