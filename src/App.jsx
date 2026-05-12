@@ -50,8 +50,8 @@ const App = () => {
 
   const validatePhone = (phone, country) => {
     const cleaned = phone.replace(/\s/g, '');
-    if (country === 'CD') return /^(243|\+243)[0-9]{9}$/.test(cleaned);
-    if (country === 'KE') return /^(254|\+254)[0-9]{9}$/.test(cleaned);
+    if (country === 'CD') return /^[0-9]{9}$/.test(cleaned);
+  if (country === 'KE') return /^[0-9]{9}$/.test(cleaned);
     return false;
   };
 
@@ -61,8 +61,8 @@ const App = () => {
     if (!formData.receiverName.trim() || formData.receiverName.trim().length < 2) errors.receiverName = 'Nom invalide';
     const senderCountry = isRDCToKen ? 'CD' : 'KE';
     const receiverCountry = isRDCToKen ? 'KE' : 'CD';
-    if (!validatePhone(formData.senderPhone, senderCountry)) errors.senderPhone = isRDCToKen ? 'Format: 243XXXXXXXXX' : 'Format: 254XXXXXXXXX';
-    if (!validatePhone(formData.receiverPhone, receiverCountry)) errors.receiverPhone = isRDCToKen ? 'Format: 254XXXXXXXXX' : 'Format: 243XXXXXXXXX';
+    if (!validatePhone(formData.senderPhone, senderCountry)) errors.senderPhone = 'Format: 9 chiffres (ex: 813456789)';
+if (!validatePhone(formData.receiverPhone, receiverCountry)) errors.receiverPhone = 'Format: 9 chiffres (ex: 711111111)';
     if (inputAmount < 5) errors.amount = 'Montant minimum : 5$';
     if (inputAmount > 500) errors.amount = 'Montant maximum : 500$';
     return errors;
@@ -99,7 +99,13 @@ const App = () => {
       const response = await fetch("https://fintrans-backend.onrender.com/transfer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, amount: inputAmount, direction })
+        body: JSON.stringify({
+  ...formData,
+  senderPhone: (isRDCToKen ? '243' : '254') + formData.senderPhone,
+  receiverPhone: (isRDCToKen ? '254' : '243') + formData.receiverPhone,
+  amount: inputAmount,
+  direction
+})
       });
       if (response.ok) {
         const data = await response.json();
@@ -558,7 +564,7 @@ pollStatus(data.id);
 
   <input
     type="tel"
-    placeholder={isRDCToKen ? "812 345 678" : "711 345 678"}
+    placeholder={isRDCToKen ? "813 456 789" : "711 111 111"}
     required
     className={`flex-1 min-w-0 bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${
       formErrors.senderPhone ? 'border-red-500' : 'border-white/10'
@@ -599,7 +605,7 @@ pollStatus(data.id);
 
   <input
     type="tel"
-   placeholder={isRDCToKen ? "711 345 678" : "812 345 678"}
+   placeholder={isRDCToKen ? "711 111 111" : "813 456 789"}
     required
     className={`flex-1 min-w-0 bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${
       formErrors.receiverPhone ? 'border-red-500' : 'border-white/10'
