@@ -472,8 +472,38 @@ const App = () => {
                       <input type="text" placeholder="VOTRE NOM" required className={`w-full bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${formErrors.senderName ? 'border-red-500' : 'border-white/10'}`} value={formData.senderName} onChange={e => { setFormData({...formData, senderName: e.target.value}); setFormErrors({...formErrors, senderName: ''}); }} />
                       {formErrors.senderName && <p className="text-red-400 text-xs mt-1 font-heading">{formErrors.senderName}</p>}
                     </div>
-                    <div>
-                      <input type="tel" placeholder={isRDCToKen ? "243XXXXXXXXX" : "254XXXXXXXXX"} required className={`w-full bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${formErrors.senderPhone ? 'border-red-500' : 'border-white/10'}`} value={formData.senderPhone} onChange={e => { setFormData({...formData, senderPhone: e.target.value}); setFormErrors({...formErrors, senderPhone: ''}); }} />
+                    <div><div className="flex gap-2">
+
+  <select
+    className="w-28 bg-white/5 border border-white/10 rounded-xl px-3 text-white outline-none"
+    value={isRDCToKen ? "+243" : "+254"}
+  >
+    <option value="+243">🇨🇩 +243</option>
+    <option value="+254">🇰🇪 +254</option>
+  </select>
+
+  <input
+    type="tel"
+    placeholder="812 345 678"
+    required
+    className={`flex-1 bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${
+      formErrors.senderPhone ? 'border-red-500' : 'border-white/10'
+    }`}
+    value={formData.senderPhone}
+    onChange={e => {
+      setFormData({
+        ...formData,
+        senderPhone: e.target.value
+      });
+
+      setFormErrors({
+        ...formErrors,
+        senderPhone: ''
+      });
+    }}
+  />
+
+</div>
                       {formErrors.senderPhone && <p className="text-red-400 text-xs mt-1 font-heading">{formErrors.senderPhone}</p>}
                     </div>
                   </div>
