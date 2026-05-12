@@ -90,10 +90,10 @@ const App = () => {
           setFormErrors({});
         }, 5000);
       } else {
-        setError("Une erreur est survenue. Veuillez reessayer.");
+        setError("Une erreur est survenue. Veuillez réessayer.");
       }
     } catch (err) {
-      setError("Impossible de contacter le serveur. Verifiez votre connexion.");
+      setError("Impossible de contacter le serveur. Vérifiez votre connexion.");
     } finally {
       setIsLoading(false);
     }
@@ -171,14 +171,14 @@ const App = () => {
         <div className="container mx-auto max-w-6xl px-6 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-purple-400 text-xs font-black font-heading tracking-widest uppercase mb-10">
             <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
-            Transferts Instantanes : RDC vers Kenya
+            Transferts Instantanés : RDC ↔ Kenya
           </div>
           <h1 className="text-4xl md:text-8xl lg:text-9xl font-heading font-black italic leading-tight tracking-tighter uppercase mb-10 text-white">
             L'amour n'a pas <br />
             <span className="text-gradient">de distance.</span>
           </h1>
           <p className="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-16">
-            Envoyez du soutien a ceux qui comptent vraiment. Pas de bureau a visiter, pas de capture d'ecran a envoyer.
+            Envoyez du soutien à ceux qui comptent vraiment. Pas de bureau à visiter, pas de capture d'écran à envoyer.
           </p>
           <button
             onClick={() => document.getElementById('calculateur').scrollIntoView({ behavior: 'smooth' })}
@@ -200,9 +200,9 @@ const App = () => {
                   <div className="flex flex-col">
                     <span className="text-xs font-black text-purple-400 uppercase tracking-widest mb-1 font-heading">Trajet des fonds</span>
                     <div className="flex items-center gap-2">
-                      <span className="text-xl">{isRDCToKen ? 'CD' : 'KE'}</span>
-                      <span className="text-white/40">vers</span>
-                      <span className="text-xl">{isRDCToKen ? 'KE' : 'CD'}</span>
+                      <span className="text-xl">{isRDCToKen ? '🇨🇩' : '🇰🇪'}</span>
+                      <span className="text-white/40">→</span>
+                      <span className="text-xl">{isRDCToKen ? '🇰🇪' : '🇨🇩'}</span>
                       <span className="text-xs font-black font-heading uppercase ml-1 text-white/60">
                         {isRDCToKen ? 'Congo vers Kenya' : 'Kenya vers Congo'}
                       </span>
@@ -228,7 +228,7 @@ const App = () => {
                 </div>
 
                 <div className="bg-purple-600/5 border border-purple-500/30 rounded-2xl p-6">
-                  <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Ils recoivent (en 15 min)</label>
+                  <label className="text-xs font-black text-purple-400 uppercase tracking-widest block mb-3 font-heading">Ils reçoivent (en 15 min)</label>
                   <div className="flex justify-between items-center gap-2">
                     <div className="text-4xl font-heading font-black w-full">
                       {finalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -238,7 +238,7 @@ const App = () => {
                     </div>
                   </div>
                   <div className="mt-3 pt-3 border-t border-white/5 text-xs text-center font-black text-slate-500 uppercase tracking-widest">
-                    Frais {feeAmount.toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) - Simple et honnete
+                    Frais {feeAmount.toFixed(2)} {isRDCToKen ? '$' : 'KES'} (7%) • Simple et honnête
                   </div>
                 </div>
 
@@ -257,7 +257,7 @@ const App = () => {
               <div>
                 <h3 className="text-2xl md:text-3xl font-heading font-black text-white uppercase italic mb-4">
                   Des milliers de familles. <br />
-                  <span className="text-purple-400">Un seul vrai probleme.</span>
+                  <span className="text-purple-400">Un seul vrai problème.</span>
                 </h3>
                 <p className="text-slate-400 text-sm md:text-base mb-6 leading-relaxed">
                   Entre la RDC et le Kenya, envoyer de l'argent reste un parcours du combattant.
@@ -268,7 +268,7 @@ const App = () => {
                 <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
                   <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-heading font-black text-white">Banques fermees la nuit</p>
+                    <p className="text-sm font-heading font-black text-white">Banques fermées la nuit</p>
                     <p className="text-xs text-slate-400 mt-1 break-words">Les ATM ne sont pas toujours accessibles quand l'urgence frappe.</p>
                   </div>
                 </div>
@@ -276,8 +276,8 @@ const App = () => {
                 <div className="w-full flex items-start gap-3 p-4 bg-red-500/5 border border-red-500/10 rounded-2xl">
                   <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-heading font-black text-white">Une lettre, et tout est bloque</p>
-                    <p className="text-xs text-slate-400 mt-1 break-words">Une erreur d'orthographe sur le nom et votre argent reste coince.</p>
+                    <p className="text-sm font-heading font-black text-white">Une lettre, et tout est bloqué</p>
+                    <p className="text-xs text-slate-400 mt-1 break-words">Une erreur d'orthographe sur le nom et votre argent reste coincé.</p>
                   </div>
                 </div>
 
@@ -285,14 +285,14 @@ const App = () => {
                   <X className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-heading font-black text-white">Screenshot WhatsApp obligatoire</p>
-                    <p className="text-xs text-slate-400 mt-1 break-words">Sans la capture envoyee, le beneficiaire ne recoit rien.</p>
+                    <p className="text-xs text-slate-400 mt-1 break-words">Sans la capture envoyée, le bénéficiaire ne reçoit rien.</p>
                   </div>
                 </div>
 
                 <div className="w-full flex items-start gap-3 p-4 bg-green-500/5 border border-green-500/20 rounded-2xl">
                   <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-heading font-black text-white">MuniaPay : direct sur le telephone</p>
+                    <p className="text-sm font-heading font-black text-white">MuniaPay : direct sur le téléphone</p>
                     <p className="text-xs text-slate-400 mt-1 break-words">En quelques minutes, l'argent arrive sur M-Pesa. C'est tout.</p>
                   </div>
                 </div>
@@ -307,13 +307,13 @@ const App = () => {
         <div className="container mx-auto max-w-7xl px-6 relative z-10">
           <div className="text-center mb-24">
             <h2 className="text-xs font-black text-purple-500 uppercase tracking-widest font-heading italic mb-4">Le Processus</h2>
-            <h3 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic font-heading text-white">Comment ca <br /><span className="text-white/20">marche ?</span></h3>
+            <h3 className="text-4xl md:text-7xl font-black tracking-tighter uppercase italic font-heading text-white">Comment ça <br /><span className="text-white/20">marche ?</span></h3>
           </div>
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              { id: '01', title: 'Details', desc: "Entrez les informations de l'expediteur et du beneficiaire.", icon: <MessageSquare /> },
+              { id: '01', title: 'Détails', desc: "Entrez les informations de l'expéditeur et du bénéficiaire.", icon: <MessageSquare /> },
               { id: '02', title: 'Paiement', desc: "Payez via votre compte Mobile Money habituel.", icon: <Smartphone /> },
-              { id: '03', title: 'Reception', desc: "Le beneficiaire recoit l'argent sur M-Pesa en moins de 15 minutes.", icon: <CheckCircle2 /> }
+              { id: '03', title: 'Réception', desc: "Le bénéficiaire reçoit l'argent sur M-Pesa en moins de 15 minutes.", icon: <CheckCircle2 /> }
             ].map((step, i) => (
               <div key={i} className="glass-card p-10 rounded-3xl hover:border-purple-500/50 transition-all relative overflow-hidden">
                 <div className="absolute -top-6 -right-6 text-8xl font-black text-white/5 font-heading italic">{step.id}</div>
@@ -336,8 +336,8 @@ const App = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: "Maman Sarah", text: "Avant, mon fils devait aller a la banque... La, je recois mon M-Pesa meme a minuit.", offset: "" },
-              { name: "Junior K.", text: "J'utilise Munia Pay pour mon loyer au Kenya depuis le Congo. C'est carre.", offset: "md:translate-y-6" },
+              { name: "Maman Sarah", text: "Avant, mon fils devait aller à la banque... Là, je reçois mon M-Pesa même à minuit.", offset: "" },
+              { name: "Junior K.", text: "J'utilise Munia Pay pour mon loyer au Kenya depuis le Congo. C'est carré.", offset: "md:translate-y-6" },
               { name: "Alain M.", text: "C'est le seul service qui ne me demande pas de scanner ma carte 3 fois.", offset: "md:translate-y-12" }
             ].map((t, i) => (
               <div key={i} className={`bg-slate-50 p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 ${t.offset}`}>
@@ -357,9 +357,9 @@ const App = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Oubliez Western.", desc: "C'est votre numero de telephone qui compte. Zero blocage.", icon: <X className="w-5 h-5"/> },
-              { title: "Meme a minuit.", desc: "L'argent arrive direct sur M-Pesa. Pas besoin d'ATM ouvert.", icon: <Clock className="w-5 h-5"/> },
-              { title: "Zero capture.", desc: "Notre systeme voit tout automatiquement.", icon: <Lock className="w-5 h-5"/> }
+              { title: "Oubliez Western.", desc: "C'est votre numéro de téléphone qui compte. Zéro blocage.", icon: <X className="w-5 h-5"/> },
+              { title: "Même à minuit.", desc: "L'argent arrive direct sur M-Pesa. Pas besoin d'ATM ouvert.", icon: <Clock className="w-5 h-5"/> },
+              { title: "Zéro capture.", desc: "Notre système voit tout automatiquement.", icon: <Lock className="w-5 h-5"/> }
             ].map((item, i) => (
               <div key={i} className="glass-card p-8 md:p-10 rounded-3xl border border-white/10">
                 <h4 className="text-xl font-black font-heading uppercase mb-3 italic">{item.title}</h4>
@@ -373,14 +373,14 @@ const App = () => {
       <section className="py-16 md:py-32">
         <div className="container mx-auto max-w-4xl px-6">
           <div className="text-center mb-16">
-            <h2 className="text-xs font-black text-purple-500 uppercase tracking-widest font-heading italic mb-4">Questions frequentes</h2>
-            <h3 className="text-3xl md:text-6xl font-black tracking-tighter uppercase italic font-heading text-white">Des reponses a <br/><span className="text-white/20">vos doutes.</span></h3>
+            <h2 className="text-xs font-black text-purple-500 uppercase tracking-widest font-heading italic mb-4">Questions fréquentes</h2>
+            <h3 className="text-3xl md:text-6xl font-black tracking-tighter uppercase italic font-heading text-white">Des réponses à <br/><span className="text-white/20">vos doutes.</span></h3>
           </div>
           <div className="space-y-6 mb-20">
             {[
-              { q: "C'est vraiment instantane ?", a: "Absolument. Le beneficiaire recoit ses fonds sur M-Pesa en moyenne sous 10 a 15 minutes." },
+              { q: "C'est vraiment instantané ?", a: "Absolument. Le bénéficiaire reçoit ses fonds sur M-Pesa en moyenne sous 10 à 15 minutes." },
               { q: "Y a-t-il une limite de transfert ?", a: "Minimum 5$ et maximum 500$ par transaction. Contactez-nous pour augmenter ce plafond." },
-              { q: "Mes informations sont-elles securisees ?", a: "Nous utilisons un cryptage de bout en bout. Nous ne stockons jamais vos acces Mobile Money." }
+              { q: "Mes informations sont-elles sécurisées ?", a: "Nous utilisons un cryptage de bout en bout. Nous ne stockons jamais vos accès Mobile Money." }
             ].map((item, i) => (
               <div key={i} className={`glass-card p-6 md:p-8 rounded-2xl cursor-pointer transition-all ${openFaq === i ? 'bg-purple-500/5 border-purple-500/30' : ''}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                 <div className="flex justify-between items-center text-white">
@@ -396,7 +396,7 @@ const App = () => {
 
           <div className="p-8 md:p-12 glass-card rounded-3xl border border-purple-500/20 text-center">
             <h4 className="text-xl font-black font-heading text-white uppercase italic mb-4">Besoin d'un coup de main ?</h4>
-            <p className="text-slate-400 mb-8 max-w-md mx-auto">Notre equipe est disponible 7j/7.</p>
+            <p className="text-slate-400 mb-8 max-w-md mx-auto">Notre équipe est disponible 7j/7.</p>
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
               <a href="#" className="flex items-center gap-3 px-8 py-4 bg-green-500/10 border border-green-500/20 rounded-2xl text-green-400 font-heading font-black text-xs uppercase tracking-widest hover:bg-green-500 hover:text-white transition-all">
                 <MessageCircle className="w-4 h-4" /> WhatsApp
@@ -411,7 +411,7 @@ const App = () => {
 
       <footer className="py-12 text-center border-t border-white/5">
         <img src="/logo.svg" alt="MuniaPay" className="h-8 w-auto mx-auto mb-4 opacity-50" />
-        <p className="text-xs font-bold text-slate-700 uppercase tracking-widest">2026 Munia Pay. Fait avec coeur.</p>
+        <p className="text-xs font-bold text-slate-700 uppercase tracking-widest">© 2026 Munia Pay. Fait avec coeur.</p>
       </footer>
 
       {showModal && (
@@ -427,22 +427,22 @@ const App = () => {
             {isSuccess ? (
               <div className="text-center py-8">
                 <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl">OK</span>
+                  <span className="text-4xl">✅</span>
                 </div>
-                <h4 className="text-2xl font-black uppercase italic font-heading mb-3 text-white">Transfert initie !</h4>
+                <h4 className="text-2xl font-black uppercase italic font-heading mb-3 text-white">Transfert initié !</h4>
                 <p className="text-slate-400 max-w-md mx-auto leading-relaxed mb-6">
                   Votre famille recevra l'argent sous environ 15 minutes.
                 </p>
                 {transactionId && (
                   <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-                    <p className="text-xs text-slate-500 uppercase tracking-widest mb-1 font-heading">Numero de suivi</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-widest mb-1 font-heading">Numéro de suivi</p>
                     <p className="text-purple-400 font-black text-sm font-mono">{transactionId.slice(0, 8).toUpperCase()}</p>
                   </div>
                 )}
               </div>
             ) : (
               <>
-                <h3 className="text-2xl font-black font-heading text-white uppercase italic text-center mb-6">Derniere etape.</h3>
+                <h3 className="text-2xl font-black font-heading text-white uppercase italic text-center mb-6">Dernière étape.</h3>
 
                 <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-5 mb-6">
                   <div className="flex justify-between items-center text-sm">
@@ -454,7 +454,7 @@ const App = () => {
                     <span className="text-slate-400">-{feeAmount.toFixed(2)} {isRDCToKen ? 'USD' : 'KES'}</span>
                   </div>
                   <div className="flex justify-between items-center mt-3 pt-3 border-t border-white/10">
-                    <span className="text-purple-400 font-black text-sm uppercase tracking-widest font-heading">Ils recoivent</span>
+                    <span className="text-purple-400 font-black text-sm uppercase tracking-widest font-heading">Ils reçoivent</span>
                     <span className="text-white font-black text-lg">{finalAmount.toLocaleString(undefined, {maximumFractionDigits: 2})} {isRDCToKen ? 'KES' : 'USD'}</span>
                   </div>
                 </div>
@@ -479,7 +479,7 @@ const App = () => {
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <input type="text" placeholder="NOM DU BENEFICIAIRE" required className={`w-full bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${formErrors.receiverName ? 'border-red-500' : 'border-white/10'}`} value={formData.receiverName} onChange={e => { setFormData({...formData, receiverName: e.target.value}); setFormErrors({...formErrors, receiverName: ''}); }} />
+                      <input type="text" placeholder="NOM DU BÉNÉFICIAIRE" required className={`w-full bg-white/5 border rounded-xl p-4 outline-none focus:border-purple-500 transition-all ${formErrors.receiverName ? 'border-red-500' : 'border-white/10'}`} value={formData.receiverName} onChange={e => { setFormData({...formData, receiverName: e.target.value}); setFormErrors({...formErrors, receiverName: ''}); }} />
                       {formErrors.receiverName && <p className="text-red-400 text-xs mt-1 font-heading">{formErrors.receiverName}</p>}
                     </div>
                     <div>
