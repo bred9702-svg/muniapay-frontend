@@ -412,18 +412,17 @@ const App = () => {
             ))}
           </div>
 
-          <div className="p-8 md:p-12 glass-card rounded-3xl border border-purple-500/20 text-center">
-            <h4 className="text-xl font-black font-heading text-white uppercase italic mb-4">Besoin d'un coup de main ?</h4>
-            <p className="text-slate-400 mb-8 max-w-md mx-auto">Notre équipe est disponible 7j/7.</p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-              <a href="https://wa.me/254742599719?text=Bonjour%20MuniaPay,%20j'ai%20besoin%20d'aide" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-8 py-4 bg-green-500/10 border border-green-500/20 rounded-2xl text-green-400 font-heading font-black text-xs uppercase tracking-widest hover:bg-green-500 hover:text-white transition-all">
-  <MessageCircle className="w-4 h-4" /> WhatsApp
-</a>
-              <a href="#" className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl text-white font-heading font-black text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all">
-                <Mail className="w-4 h-4" /> E-mail Support
-              </a>
-            </div>
-          </div>
+         <div className="p-8 md:p-12 glass-card rounded-3xl border border-purple-500/20 text-center">
+  <h4 className="text-2xl md:text-3xl font-black font-heading text-white uppercase italic mb-4">Prêt à envoyer ?</h4>
+  <p className="text-slate-400 mb-8 max-w-md mx-auto">Votre premier transfert vous attend. C'est simple, rapide et transparent.</p>
+  <button
+    onClick={() => document.getElementById('calculateur').scrollIntoView({ behavior: 'smooth' })}
+    className="relative px-12 py-6 rounded-2xl overflow-hidden shadow-2xl transition-transform hover:scale-105 inline-block"
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600" />
+    <span className="relative font-heading font-black text-xs uppercase tracking-widest text-white">Faire mon transfert</span>
+  </button>
+</div>
         </div>
       </section>
 
