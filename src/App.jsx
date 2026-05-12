@@ -310,8 +310,8 @@ const App = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-10">
             {[
-  { id: '01', title: 'Remplissez les détails', desc: "Renseignez le montant, votre numéro Mobile Money et celui du bénéficiaire. Le calcul est instantané : vous savez exactement combien il recevra. Rassurez-vous d'avoir suffisamment de fonds sur votre téléphone, puis appuyez sur Confirmer l'envoi.", icon: <MessageSquare /> },
-  { id: '02', title: 'Validez le paiement', desc: "Confirmez sur votre téléphone via votre wallet Mobile Money habituel en tapant votre PIN (ex. Vodacom M-Pesa RDC ou M-Pesa Kenya). Aucune carte bancaire, aucun déplacement — juste avec votre téléphone.", icon: <Smartphone /> },
+  { id: '01', title: 'Remplissez les détails', desc: "Renseignez le montant, votre numéro Mobile Money et celui du bénéficiaire. Le calcul est instantané : vous savez exactement combien il recevra. Puis appuyez sur Confirmer l'envoi.", icon: <MessageSquare /> },
+  { id: '02', title: 'Validez le paiement', desc: "Confirmez sur votre téléphone via votre wallet Mobile Money habituel en tapant votre PIN (ex. Vodacom M-Pesa RDC ou M-Pesa Kenya). Aucune carte bancaire, aucun déplacement.", icon: <Smartphone /> },
   { id: '03', title: "L'argent arrive", desc: "En quelques minutes, le bénéficiaire reçoit l'argent et une notification sur son téléphone. Pas de capture d'écran à envoyer, pas de code à transmettre. C'est fait.", icon: <CheckCircle2 /> }
 ].map((step, i) => (
               <div key={i} className="glass-card p-10 rounded-3xl hover:border-purple-500/50 transition-all relative overflow-hidden">
