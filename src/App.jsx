@@ -255,7 +255,7 @@ const App = () => {
   className="block w-full max-w-full h-auto object-contain"
 />
               <div>
-                <h3 className="text-2xl md:text-3xl font-heading font-black text-white uppercase italic mb-4">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-heading font-black text-white uppercase italic mb-4 leading-tight break-words">
                   Des milliers de familles. <br />
                   <span className="text-purple-400">Un seul vrai problème.</span>
                 </h3>
