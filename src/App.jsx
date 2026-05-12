@@ -174,8 +174,8 @@ const App = () => {
             Transferts Instantanés : RDC ↔ Kenya
           </div>
           <h1 className="text-4xl md:text-8xl lg:text-9xl font-heading font-black italic leading-tight tracking-tighter uppercase mb-10 text-white">
-  Le RDC et le Kenya, <br />
-  <span className="text-gradient">enfin connectés.</span>
+  La RDC et le Kenya, <br />
+  <span className="text-gradient">connectés.</span>
 </h1>
 <p className="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-16">
   Envoyez et recevez de l'argent entre la RDC et le Kenya en quelques minutes. Pas de banque, pas de paperasse, pas de capture d'écran. Juste votre téléphone.
