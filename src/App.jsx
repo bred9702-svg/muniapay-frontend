@@ -255,7 +255,7 @@ const App = () => {
   className="block w-full max-w-full h-auto object-contain"
 />
               <div>
-                <<h3 className="text-xl md:text-2xl font-heading font-black text-white uppercase italic mb-4">
+                <h3 className="text-xl md:text-2xl font-heading font-black text-white uppercase italic mb-4">
   Des milliers de congolais. <br />
   <span className="text-purple-400">Un seul problème.</span>
 </h3>
