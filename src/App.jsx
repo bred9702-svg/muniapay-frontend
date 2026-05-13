@@ -63,8 +63,12 @@ const App = () => {
     const receiverCountry = isRDCToKen ? 'KE' : 'CD';
     if (!validatePhone(formData.senderPhone, senderCountry)) errors.senderPhone = 'Format: 9 chiffres (ex: 813456789)';
 if (!validatePhone(formData.receiverPhone, receiverCountry)) errors.receiverPhone = 'Format: 9 chiffres (ex: 711111111)';
-    if (inputAmount < 5) errors.amount = 'Montant minimum : 5$';
-    if (inputAmount > 500) errors.amount = 'Montant maximum : 500$';
+    const minAmount = isRDCToKen ? 5 : 5 * 129.50;
+    const maxAmount = isRDCToKen ? 500 : 500 * 129.50;
+    const minLabel = isRDCToKen ? '5$' : '650 KES';
+    const maxLabel = isRDCToKen ? '500$' : '64 750 KES';
+    if (inputAmount < minAmount) errors.amount = `Montant minimum : ${minLabel}`;
+    if (inputAmount > maxAmount) errors.amount = `Montant maximum : ${maxLabel}`;
     return errors;
   };
 
@@ -243,7 +247,7 @@ pollStatus(data.id);
                   <div className="flex justify-between items-center gap-2">
                     <div className="flex items-baseline gap-1.5 flex-1">
                       <span className="text-2xl font-heading font-black text-purple-400">{isRDCToKen ? '$' : 'KES'}</span>
-                      <input type="number" value={inputAmount} onChange={(e) => setInputAmount(parseFloat(e.target.value) || 0)} className="bg-transparent text-4xl font-heading font-black outline-none w-full text-white" min="5" max="500" />
+                     <input type="number" value={inputAmount} onChange={(e) => setInputAmount(parseFloat(e.target.value) || 0)} className="bg-transparent text-4xl font-heading font-black outline-none w-full text-white" min={isRDCToKen ? 5 : 650} max={isRDCToKen ? 500 : 64750} />
                     </div>
                     <div className="flex items-center gap-2 bg-black/60 px-4 py-2 rounded-xl border border-white/10">
                       <span className="font-black text-xs font-heading">{isRDCToKen ? 'USD' : 'KES'}</span>
