@@ -35,7 +35,14 @@ const App = () => {
   });
 
   const feePercent = 0.07;
-  const rates = { 'RDC_TO_KEN': 129.50, 'KEN_TO_RDC': 0.00772 };
+ const [rates, setRates] = useState({ 'RDC_TO_KEN': 129.50, 'KEN_TO_RDC': 0.00772 });
+
+useEffect(() => {
+  fetch('https://fintrans-backend.onrender.com/rates')
+    .then(res => res.json())
+    .then(data => setRates(data))
+    .catch(err => console.error('Erreur taux:', err));
+}, []);
   const isRDCToKen = direction === 'RDC_TO_KEN';
   const currentRate = rates[direction];
   const feeAmount = inputAmount * feePercent;
