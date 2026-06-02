@@ -5,6 +5,7 @@ import {
   Smartphone, 
   X,
   MessageCircle,
+  Send,
   Mail,
   RefreshCw,
   Clock,
@@ -12,6 +13,7 @@ import {
   MessageSquare,
   AlertCircle
 } from 'lucide-react';
+import { askAssistant, getLocalFallbackReply } from './services/assistant';
 
 const App = () => {
   const [direction, setDirection] = useState('RDC_TO_KEN');
@@ -26,6 +28,15 @@ const App = () => {
   const [formErrors, setFormErrors] = useState({});
   const [transactionStatus, setTransactionStatus] = useState('');
   const [failureReason, setFailureReason] = useState('');
+  const [isAssistantOpen, setIsAssistantOpen] = useState(false);
+  const [assistantInput, setAssistantInput] = useState('');
+  const [assistantMessages, setAssistantMessages] = useState([
+    {
+      role: 'assistant',
+      content: "Bonjour 👋 Je suis l'assistant MuniaPay. Je peux t'aider avec le support et l'onboarding en français, anglais ou swahili."
+    }
+  ]);
+  const [isAssistantLoading, setIsAssistantLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     senderName: '',
@@ -132,6 +143,29 @@ pollStatus(data.id);
       setError("Impossible de contacter le serveur. Vérifiez votre connexion.");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleAssistantSend = async () => {
+    if (!assistantInput.trim()) return;
+    const message = assistantInput.trim();
+    const userMessage = { role: 'user', content: message };
+    const nextHistory = [...assistantMessages, userMessage];
+    setAssistantMessages(nextHistory);
+    setAssistantInput('');
+    setIsAssistantLoading(true);
+
+    try {
+      const reply = await askAssistant({
+        message,
+        history: nextHistory.slice(-8)
+      });
+      setAssistantMessages((prev) => [...prev, { role: 'assistant', content: reply }]);
+    } catch (error) {
+      const fallbackReply = getLocalFallbackReply(message);
+      setAssistantMessages((prev) => [...prev, { role: 'assistant', content: fallbackReply }]);
+    } finally {
+      setIsAssistantLoading(false);
     }
   };
 
@@ -466,6 +500,47 @@ pollStatus(data.id);
         <img src="/logo.svg" alt="MuniaPay" className="h-8 w-auto mx-auto mb-4 opacity-50" />
         <p className="text-xs font-bold text-slate-700 uppercase tracking-widest">© 2026 Munia Pay. Fait avec coeur.</p>
       </footer>
+
+      <button
+        onClick={() => setIsAssistantOpen((prev) => !prev)}
+        className="fixed bottom-6 right-6 z-[90] rounded-full bg-purple-600 p-4 text-white shadow-2xl hover:bg-purple-500 transition-all"
+        aria-label="Ouvrir assistant IA"
+      >
+        {isAssistantOpen ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
+      </button>
+
+      {isAssistantOpen && (
+        <div className="fixed bottom-24 right-6 z-[90] w-[92vw] max-w-sm glass-card rounded-2xl border border-white/20 shadow-2xl overflow-hidden">
+          <div className="px-4 py-3 border-b border-white/10 bg-black/40">
+            <p className="text-sm font-heading font-black uppercase tracking-widest text-purple-300">Assistant IA</p>
+            <p className="text-xs text-slate-400">Support client & onboarding (multilingue)</p>
+          </div>
+          <div className="h-80 overflow-y-auto p-4 space-y-3">
+            {assistantMessages.map((msg, idx) => (
+              <div key={idx} className={`text-sm p-3 rounded-xl ${msg.role === 'assistant' ? 'bg-white/10 text-slate-200' : 'bg-purple-600/30 text-white ml-8'}`}>
+                {msg.content}
+              </div>
+            ))}
+            {isAssistantLoading && (
+              <div className="text-sm p-3 rounded-xl bg-white/10 text-slate-400">
+                Assistant en train d'écrire...
+              </div>
+            )}
+          </div>
+          <div className="p-3 border-t border-white/10 flex gap-2">
+            <input
+              value={assistantInput}
+              onChange={(e) => setAssistantInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleAssistantSend()}
+              placeholder="Pose ta question..."
+              className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm outline-none focus:border-purple-500"
+            />
+            <button onClick={handleAssistantSend} className="bg-purple-600 hover:bg-purple-500 rounded-xl p-2">
+              <Send className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
 
       {showModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
